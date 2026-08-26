@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/meryemsakin/issueproof/main/schemas/config.v1.schema.json",
+  "schemaVersion": "1.0",
+  "command": [
+    "node",
+    "examples/stable-failure.js"
+  ],
+  "expect": "fail",
+  "runs": 3,
+  "timeoutSeconds": 30,
+  "maxOutputKb": 64,
+  "issue": "examples/issue.md",
+  "output": ".issueproof/receipts",
+  "cwd": "."
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:issueproof:schema:config:1.0",
+  "title": "IssueProof config v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "command"],
+  "properties": {
+    "$schema": { "type": "string", "format": "uri" },
+    "schemaVersion": { "const": "1.0" },
+    "command": {
+      "description": "Executable and arguments as an argv array; shell expansion is not performed.",
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "expect": { "enum": ["fail", "pass"] },
+    "runs": { "type": "integer", "minimum": 2, "maximum": 20 },
+    "timeoutSeconds": { "type": "integer", "minimum": 1, "maximum": 3600 },
+    "maxOutputKb": { "type": "integer", "minimum": 1, "maximum": 1024 },
+    "issue": { "type": "string", "minLength": 1 },
+    "output": { "type": "string", "minLength": 1 },
+    "cwd": { "type": "string", "minLength": 1 }
+  }
+}

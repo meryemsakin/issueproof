@@ -1,0 +1,119 @@
+name: IssueProof
+description: Verify that a bug reproduction is stable and upload its evidence receipt
+author: IssueProof contributors
+
+branding:
+  icon: check-circle
+  color: purple
+
+inputs:
+  config:
+    description: Path to an IssueProof config file
+    required: false
+    default: .issueproof.json
+  command:
+    description: Optional shell command; prefer a config argv array when possible
+    required: false
+    default: ""
+  issue:
+    description: Optional issue Markdown path overriding config
+    required: false
+    default: ""
+  runs:
+    description: Optional attempt count overriding config
+    required: false
+    default: ""
+  artifact-name:
+    description: Name for the uploaded receipt artifact
+    required: false
+    default: issueproof-receipt
+
+outputs:
+  verdict:
+    description: Deterministic IssueProof verdict
+    value: ${{ steps.verify.outputs.verdict }}
+  verified:
+    description: Whether the requested outcome was verified
+    value: ${{ steps.verify.outputs.verified }}
+  receipt-path:
+    description: JSON receipt path on the runner
+    value: ${{ steps.verify.outputs.receipt-path }}
+
+runs:
+  using: composite
+  steps:
+    - id: verify
+      name: Verify reproduction
+      shell: bash
+      env:
+        ISSUEPROOF_ACTION_PATH: ${{ github.action_path }}
+        ISSUEPROOF_CONFIG: ${{ inputs.config }}
+        ISSUEPROOF_COMMAND: ${{ inputs.command }}
+        ISSUEPROOF_ISSUE: ${{ inputs.issue }}
+        ISSUEPROOF_RUNS: ${{ inputs.runs }}
+        ISSUEPROOF_REPORT_ROOT: ${{ runner.temp }}/issueproof-receipts
+        ISSUEPROOF_RESULT: ${{ runner.temp }}/issueproof-result.json
+        ISSUEPROOF_EXIT_CODE: ${{ runner.temp }}/issueproof-exit-code
+      run: |
+        set -uo pipefail
+        args=(verify --json --output "$ISSUEPROOF_REPORT_ROOT")
+
+        if [[ -n "$ISSUEPROOF_RUNS" ]]; then
+          args+=(--runs "$ISSUEPROOF_RUNS")
+        fi
+        if [[ -n "$ISSUEPROOF_ISSUE" ]]; then
+          args+=(--issue "$ISSUEPROOF_ISSUE")
+        fi
+
+        if [[ -n "$ISSUEPROOF_COMMAND" ]]; then
+          if [[ -f "$ISSUEPROOF_CONFIG" ]]; then
+            args+=(--config "$ISSUEPROOF_CONFIG")
+          else
+            args+=(--no-config)
+          fi
+          args+=(-- bash -lc "$ISSUEPROOF_COMMAND")
+        else
+          args+=(--config "$ISSUEPROOF_CONFIG")
+        fi
+
+        set +e
+        node "$ISSUEPROOF_ACTION_PATH/bin/issueproof.js" "${args[@]}" > "$ISSUEPROOF_RESULT"
+        issueproof_code=$?
+        set -e
+        echo "$issueproof_code" > "$ISSUEPROOF_EXIT_CODE"
+
+        if [[ -s "$ISSUEPROOF_RESULT" ]]; then
+          node -e '
+            const fs = require("node:fs");
+            const result = JSON.parse(fs.readFileSync(process.env.ISSUEPROOF_RESULT, "utf8"));
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `verdict=${result.verdict}\n`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `verified=${result.verified}\n`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, `receipt-path=${result.jsonPath}\n`);
+          '
+        else
+          echo "verdict=command_error" >> "$GITHUB_OUTPUT"
+          echo "verified=false" >> "$GITHUB_OUTPUT"
+          echo "receipt-path=" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Upload IssueProof receipt
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v7
+      with:
+        name: ${{ inputs.artifact-name }}
+        path: |
+          ${{ runner.temp }}/issueproof-receipts
+          ${{ runner.temp }}/issueproof-result.json
+        if-no-files-found: error
+        retention-days: 7
+
+    - name: Enforce verdict
+      if: ${{ always() }}
+      shell: bash
+      env:
+        ISSUEPROOF_EXIT_CODE: ${{ runner.temp }}/issueproof-exit-code
+      run: |
+        if [[ ! -f "$ISSUEPROOF_EXIT_CODE" ]]; then
+          exit 2
+        fi
+        exit "$(cat "$ISSUEPROOF_EXIT_CODE")"

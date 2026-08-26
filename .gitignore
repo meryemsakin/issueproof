@@ -1,0 +1,5 @@
+node_modules/
+.issueproof/
+.DS_Store
+coverage/
+*.log

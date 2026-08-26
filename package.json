@@ -1,0 +1,44 @@
+{
+  "name": "issueproof",
+  "version": "0.2.0",
+  "description": "Verify that a bug reproduction is stable and produce an agent-ready evidence receipt.",
+  "author": "Meryem Sakin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meryemsakin/issueproof.git"
+  },
+  "homepage": "https://github.com/meryemsakin/issueproof#readme",
+  "bugs": {
+    "url": "https://github.com/meryemsakin/issueproof/issues"
+  },
+  "type": "module",
+  "bin": {
+    "issueproof": "./bin/issueproof.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "schemas",
+    "docs",
+    "action.yml",
+    "CHANGELOG.md",
+    "SECURITY.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check bin/issueproof.js && node --check src/cli.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "bug-report",
+    "reproducibility",
+    "debugging",
+    "ai-agent",
+    "cli"
+  ],
+  "license": "MIT"
+}

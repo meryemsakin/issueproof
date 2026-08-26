@@ -1,0 +1,51 @@
+name: Bug report
+description: Report a reproducible IssueProof defect
+title: "[Bug]: "
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: Please remove secrets and inspect every receipt before attaching it.
+  - type: textarea
+    id: observed
+    attributes:
+      label: Observed behavior
+      description: What happened, including the exact error?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Include the starting state and exact IssueProof command.
+      placeholder: issueproof verify --runs 3 -- <command>
+    validations:
+      required: true
+  - type: textarea
+    id: receipt
+    attributes:
+      label: Inspected receipt
+      description: Paste receipt.md after reviewing it for sensitive information.
+    validations:
+      required: true
+  - type: input
+    id: frequency
+    attributes:
+      label: Frequency
+      placeholder: 3/3 attempts
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Node.js version, IssueProof version, and relevant runtime details.
+    validations:
+      required: true

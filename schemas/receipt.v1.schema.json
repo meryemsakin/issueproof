@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:issueproof:schema:receipt:1.0",
+  "title": "IssueProof receipt v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "createdAt",
+    "tool",
+    "reproduction",
+    "verdict",
+    "runs",
+    "environment",
+    "git",
+    "privacy",
+    "integrity"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "id": { "type": "string", "minLength": 8 },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "tool": {
+      "type": "object",
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "const": "issueproof" },
+        "version": { "type": "string" }
+      }
+    },
+    "reproduction": {
+      "type": "object",
+      "required": ["expectation", "attemptsRequested", "attemptsCompleted", "command"],
+      "properties": {
+        "expectation": { "enum": ["fail", "pass"] },
+        "attemptsRequested": { "type": "integer", "minimum": 1 },
+        "attemptsCompleted": { "type": "integer", "minimum": 1 },
+        "command": {
+          "type": "object",
+          "required": ["executable", "args"],
+          "properties": {
+            "executable": { "type": "string", "minLength": 1 },
+            "args": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "verdict": {
+      "type": "object",
+      "required": ["name", "verified", "summary"],
+      "properties": {
+        "name": {
+          "enum": [
+            "stable_failure",
+            "divergent_failure",
+            "flaky",
+            "not_reproduced",
+            "contaminated",
+            "timed_out",
+            "verified_pass",
+            "unexpected_failure",
+            "observed_failure",
+            "observed_pass",
+            "command_error",
+            "invalid"
+          ]
+        },
+        "verified": { "type": "boolean" },
+        "summary": { "type": "string" }
+      }
+    },
+    "runs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["attempt", "exitCode", "durationMs", "fingerprint", "stateChanged", "output"]
+      }
+    },
+    "environment": { "type": "object" },
+    "git": { "type": "object" },
+    "issue": { "type": ["object", "null"] },
+    "issueAssessment": { "type": ["object", "null"] },
+    "privacy": { "type": "object" },
+    "integrity": {
+      "type": "object",
+      "required": ["algorithm", "payloadHash", "scope"],
+      "properties": {
+        "algorithm": { "const": "sha256" },
+        "payloadHash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "scope": { "type": "string" }
+      }
+    }
+  }
+}
