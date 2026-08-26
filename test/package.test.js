@@ -14,5 +14,5 @@ test("publishes an executable IssueProof CLI entry", async () => {
   const executable = path.join(repositoryRoot, packageJson.bin.issueproof);
   await access(executable, constants.X_OK);
   const source = await readFile(executable, "utf8");
-  assert.match(source, /^#!\/usr\/bin\/env node\n/);
+  assert.match(source, /^#!\/usr\/bin\/env node\r?\n/);
 });
