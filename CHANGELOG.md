@@ -12,6 +12,7 @@ All notable changes are documented here. The project follows semantic versioning
 - Require at least two executions for a stability claim.
 - Distinguish command startup errors from observed program failures.
 - Expand the suite to config, comparison, tamper, and Git-contamination cases.
+- Validate the packaged CLI entry and run tests automatically before npm publication.
 
 ## 0.1.0 — 2026-08-26
 

@@ -13,7 +13,7 @@
   },
   "type": "module",
   "bin": {
-    "issueproof": "./bin/issueproof.js"
+    "issueproof": "bin/issueproof.js"
   },
   "files": [
     "bin",
@@ -28,7 +28,8 @@
   ],
   "scripts": {
     "test": "node --test",
-    "check": "node --check bin/issueproof.js && node --check src/cli.js"
+    "check": "node --check bin/issueproof.js && node --check src/cli.js",
+    "prepublishOnly": "npm test && npm run check"
   },
   "engines": {
     "node": ">=20"
