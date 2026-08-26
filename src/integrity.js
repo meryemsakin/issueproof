@@ -35,13 +35,13 @@ export function sealReceipt(receipt) {
 export function verifyReceipt(receipt) {
   const expected = receipt?.integrity?.payloadHash;
   if (receipt?.integrity?.algorithm !== "sha256" || typeof expected !== "string") {
-    return { valid: false, reason: "Receipt has no supported integrity seal." };
+    return { valid: false, reason: "Receipt has no supported integrity checksum." };
   }
   const actual = receiptHash(receipt);
   const expectedBuffer = Buffer.from(expected, "utf8");
   const actualBuffer = Buffer.from(actual, "utf8");
   const valid = expectedBuffer.length === actualBuffer.length && timingSafeEqual(expectedBuffer, actualBuffer);
-  return { valid, expected, actual, reason: valid ? null : "Receipt payload has changed since it was sealed." };
+  return { valid, expected, actual, reason: valid ? null : "Receipt payload does not match its integrity checksum." };
 }
 
 export function validateReceiptShape(receipt) {

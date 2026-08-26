@@ -1,6 +1,6 @@
 name: IssueProof
 description: Verify that a bug reproduction is stable and upload its evidence receipt
-author: IssueProof contributors
+author: Meryem Sakin
 
 branding:
   icon: check-circle
@@ -51,11 +51,12 @@ runs:
         ISSUEPROOF_COMMAND: ${{ inputs.command }}
         ISSUEPROOF_ISSUE: ${{ inputs.issue }}
         ISSUEPROOF_RUNS: ${{ inputs.runs }}
-        ISSUEPROOF_REPORT_ROOT: ${{ runner.temp }}/issueproof-receipts
-        ISSUEPROOF_RESULT: ${{ runner.temp }}/issueproof-result.json
-        ISSUEPROOF_EXIT_CODE: ${{ runner.temp }}/issueproof-exit-code
+        ISSUEPROOF_REPORT_ROOT: issueproof-action-output/receipts
+        ISSUEPROOF_RESULT: issueproof-action-output/result.json
+        ISSUEPROOF_EXIT_CODE: issueproof-action-output/exit-code
       run: |
         set -uo pipefail
+        mkdir -p issueproof-action-output
         args=(verify --json --output "$ISSUEPROOF_REPORT_ROOT")
 
         if [[ -n "$ISSUEPROOF_RUNS" ]]; then
@@ -101,9 +102,7 @@ runs:
       uses: actions/upload-artifact@v7
       with:
         name: ${{ inputs.artifact-name }}
-        path: |
-          ${{ runner.temp }}/issueproof-receipts
-          ${{ runner.temp }}/issueproof-result.json
+        path: ${{ github.workspace }}/issueproof-action-output
         if-no-files-found: error
         retention-days: 7
 
@@ -111,7 +110,7 @@ runs:
       if: ${{ always() }}
       shell: bash
       env:
-        ISSUEPROOF_EXIT_CODE: ${{ runner.temp }}/issueproof-exit-code
+        ISSUEPROOF_EXIT_CODE: issueproof-action-output/exit-code
       run: |
         if [[ ! -f "$ISSUEPROOF_EXIT_CODE" ]]; then
           exit 2

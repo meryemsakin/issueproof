@@ -17,7 +17,7 @@ command + optional issue text
           +---- transparent issue-evidence checks
           |
           v
- canonical receipt -> SHA-256 seal -> JSON + Markdown
+ canonical receipt -> SHA-256 integrity checksum -> JSON + Markdown
 ```
 
 ## Design principles
@@ -39,16 +39,16 @@ command + optional issue text
 | `fingerprint.js` | Volatile-value normalization and failure signature hashing |
 | `classify.js` | Deterministic verdict state machine |
 | `readiness.js` | Explainable issue-evidence checklist |
-| `integrity.js` | Canonical serialization and receipt seal verification |
+| `integrity.js` | Canonical serialization and receipt checksum verification |
 | `config.js` | Strict config parsing, relative-path resolution, credential-risk gate |
-| `compare.js` | Seal-checked cross-receipt observation comparison |
+| `compare.js` | Integrity-checked cross-receipt observation comparison |
 | `verify.js` | Orchestration and schema assembly |
 | `report.js` | JSON and Markdown persistence |
 | `cli.js` | User-facing command contract and exit codes |
 
 ## Receipt semantics
 
-The SHA-256 seal detects accidental or intentional edits after receipt generation. It is **not a digital signature**: anyone able to edit the receipt can recompute an unsigned seal. A later attestation mode can add Sigstore/in-toto signing without breaking the v1 observation model.
+The SHA-256 integrity checksum detects a receipt changed without its checksum being refreshed. It is **not tamper-proof and not a digital signature**: anyone able to edit the receipt can recompute the checksum. A later attestation mode can add Sigstore/in-toto signing without breaking the v1 observation model.
 
 Failure fingerprints normalize a deliberately small set of volatile values such as timestamps, process IDs, UUIDs, memory addresses, and durations. Over-normalization would merge distinct bugs, so normalization rules should grow only with adversarial fixtures.
 

@@ -2,13 +2,25 @@
 
 **Prove that a bug reproduction is stable before handing it to a human or coding agent.**
 
-IssueProof runs an exact reproduction command multiple times, compares normalized failure signatures, detects repository-state contamination, redacts common secrets, and emits a tamper-evident JSON and Markdown receipt.
+[![npm](https://img.shields.io/npm/v/issueproof)](https://www.npmjs.com/package/issueproof)
+[![CI](https://github.com/meryemsakin/issueproof/actions/workflows/ci.yml/badge.svg)](https://github.com/meryemsakin/issueproof/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+IssueProof runs an exact reproduction command multiple times, compares normalized failure signatures, detects repository-state contamination, redacts common secrets, and emits integrity-checked JSON and Markdown receipts.
+
+![IssueProof terminal demo](https://raw.githubusercontent.com/meryemsakin/issueproof/main/docs/assets/issueproof-demo.gif)
+
+## Quick start
 
 ```bash
-# Create a reviewable, argv-based reproduction contract
-issueproof init --issue issue.md -- npm test
+# Run without installing
+npx issueproof verify --runs 3 -- npm test
 
-# Re-run the contract at any time
+# Or install the CLI globally
+npm install --global issueproof
+
+# Create and re-run a reviewable, argv-based reproduction contract
+issueproof init --issue issue.md -- npm test
 issueproof verify
 ```
 
@@ -104,27 +116,29 @@ IssueProof refuses to load or create a config containing credential-looking argv
 
 ## Comparing receipts
 
-`issueproof compare` verifies both receipt seals before comparing them. It reports whether the same failure signature persists, disappears, appears, or changes across commits/machines. “Failure absent” is intentionally not called “fixed”: it is evidence for this exact command and environment, not proof of a root-cause repair.
+`issueproof compare` verifies both receipt integrity checksums before comparing them. It reports whether the same failure signature persists, disappears, appears, or changes across commits/machines. “Failure absent” is intentionally not called “fixed”: it is evidence for this exact command and environment, not proof of a root-cause repair.
+
+The SHA-256 checksum detects a receipt changed without its checksum being refreshed. It is not a digital signature or proof of authorship; anyone who can edit a receipt can recompute it.
 
 Receipts with redacted command arguments are marked incomparable because two different secrets would otherwise look like the same command.
 
 ## GitHub Action
 
-The repository includes a composite [`action.yml`](action.yml). After the project is published, use a full commit SHA or trusted release tag:
+The repository includes a composite [`action.yml`](action.yml). Use a full commit SHA or a trusted release tag:
 
 ```yaml
 steps:
-  - uses: actions/checkout@v6
-  - uses: actions/setup-node@v6
+  - uses: actions/checkout@v7
+  - uses: actions/setup-node@v7
     with:
       node-version: 24
   - id: issueproof
-    uses: meryemsakin/issueproof@main
+    uses: meryemsakin/issueproof@v0.2.1
     with:
       config: .issueproof.json
 ```
 
-`@main` is convenient during alpha development; pin a reviewed full commit SHA in production. The Action uploads the receipt even when verification fails, exposes `verdict`, `verified`, and `receipt-path` outputs, then preserves IssueProof's exit status. It uses the config's direct argv execution by default. The optional `command` input is explicitly executed through `bash -lc`; never populate it from issue bodies, PR titles, comments, branch names, or other untrusted input. GitHub's own [composite-action guidance](https://docs.github.com/en/actions/tutorials/create-actions/create-a-composite-action) gives the same warning about untrusted contexts.
+Release tags are convenient for evaluation; pin a reviewed full commit SHA in production. The Action uploads the receipt even when verification fails, exposes `verdict`, `verified`, and `receipt-path` outputs, then preserves IssueProof's exit status. It uses the config's direct argv execution by default. The optional `command` input is explicitly executed through `bash -lc`; never populate it from issue bodies, PR titles, comments, branch names, or other untrusted input. GitHub's own [composite-action guidance](https://docs.github.com/en/actions/tutorials/create-actions/create-a-composite-action) gives the same warning about untrusted contexts.
 
 ## Safety defaults
 
@@ -149,11 +163,13 @@ npm run check
 node bin/issueproof.js verify
 ```
 
+The reproducible [Node.js, Python, and Go examples](https://github.com/meryemsakin/issueproof/tree/main/examples/polyglot) exercise the same language-agnostic receipt flow. CI runs the core suite on Linux, macOS, and Windows, then verifies the composite Action end to end on all three runner families.
+
 The research and product boundary are documented in [docs/research.md](docs/research.md); architectural decisions and the AI extension boundary are in [docs/architecture.md](docs/architecture.md).
 
 ## Status
 
-This is an evidence-backed v0.2 alpha, not yet a published npm package or GitHub Action. The `issueproof` npm name was unclaimed when checked on 26 August 2026, but registry availability is not a trademark clearance.
+This is an evidence-backed v0.2 public alpha. The CLI is published as [`issueproof` on npm](https://www.npmjs.com/package/issueproof), and the repository can be consumed as a composite GitHub Action.
 
 ## License
 

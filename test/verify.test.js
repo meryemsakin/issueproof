@@ -6,7 +6,7 @@ import os from "node:os";
 import path from "node:path";
 import { verifyReproduction } from "../src/verify.js";
 
-test("produces a sealed stable receipt and redacts a separate credential argument", async () => {
+test("produces an integrity-checked stable receipt and redacts a separate credential argument", async () => {
   const secret = "do-not-persist-this-token";
   const receipt = await verifyReproduction({
     command: process.execPath,

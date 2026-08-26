@@ -1,5 +1,6 @@
 node_modules/
 .issueproof/
+issueproof-action-output/
 .DS_Store
 coverage/
 *.log

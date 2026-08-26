@@ -98,7 +98,7 @@ export function compareReceipts(left, right) {
     note:
       status === "failure_absent"
         ? "The earlier failure was not observed in the later receipt; this is evidence of absence for this command, not proof of root-cause resolution."
-        : "Comparison is based on sealed receipt observations, not a root-cause inference.",
+        : "Comparison is based on integrity-checked receipt observations, not a root-cause inference.",
   };
 }
 

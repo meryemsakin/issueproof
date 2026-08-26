@@ -9,18 +9,78 @@ permissions:
 
 jobs:
   test:
+    name: Core (${{ matrix.os }}, Node ${{ matrix.node-version }})
     strategy:
+      fail-fast: false
       matrix:
-        node-version: [20, 22, 24]
-    runs-on: ubuntu-latest
+        include:
+          - os: ubuntu-latest
+            node-version: 20
+          - os: ubuntu-latest
+            node-version: 22
+          - os: ubuntu-latest
+            node-version: 24
+          - os: macos-latest
+            node-version: 24
+          - os: windows-latest
+            node-version: 24
+    runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
-      - run: npm install --ignore-scripts
+      - run: npm ci --ignore-scripts
       - run: npm test
       - run: npm run check
-      - if: ${{ matrix.node-version == 24 }}
+      - name: Dogfood the committed reproduction contract
+        if: ${{ matrix.os == 'ubuntu-latest' && matrix.node-version == 24 }}
         run: node bin/issueproof.js verify --json > issueproof-result.json
+
+  polyglot-examples:
+    name: Polyglot examples
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+      - uses: actions/setup-go@v7
+        with:
+          go-version: stable
+          cache: false
+      - run: npm ci --ignore-scripts
+      - run: npm run test:examples
+
+  action-e2e:
+    name: Action E2E (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - id: issueproof
+        uses: ./
+        with:
+          config: .issueproof.json
+          artifact-name: issueproof-action-${{ runner.os }}
+      - name: Validate Action outputs and receipt
+        env:
+          ISSUEPROOF_VERDICT: ${{ steps.issueproof.outputs.verdict }}
+          ISSUEPROOF_VERIFIED: ${{ steps.issueproof.outputs.verified }}
+          ISSUEPROOF_RECEIPT: ${{ steps.issueproof.outputs.receipt-path }}
+        run: >-
+          node -e "const a=require('node:assert/strict'),f=require('node:fs');
+          a.equal(process.env.ISSUEPROOF_VERDICT,'stable_failure');
+          a.equal(process.env.ISSUEPROOF_VERIFIED,'true');
+          a.ok(f.existsSync(process.env.ISSUEPROOF_RECEIPT));"

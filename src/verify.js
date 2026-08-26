@@ -155,6 +155,7 @@ export async function verifyReproduction(options) {
       "This is an observation from one machine, not proof of the root cause.",
       "A stable failure signature does not guarantee identical behavior in another environment.",
       "Issue readiness is a deterministic heuristic, not a repair-success prediction.",
+      "The SHA-256 integrity checksum is not a digital signature or proof of authorship.",
     ],
   };
   return sealReceipt(rawReceipt);

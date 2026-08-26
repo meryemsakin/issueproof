@@ -34,7 +34,7 @@ function receipt(options = {}) {
   });
 }
 
-test("recognizes the same failure across sealed receipts", () => {
+test("recognizes the same failure across integrity-checked receipts", () => {
   const result = compareReceipts(receipt(), receipt({ commit: "def" }));
   assert.equal(result.status, "same_failure");
   assert.equal(result.failureSignatures.shared.length, 1);
