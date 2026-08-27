@@ -174,7 +174,11 @@ node bin/issueproof.js verify
 
 The reproducible [Node.js, Python, and Go examples](https://github.com/meryemsakin/issueproof/tree/main/examples/polyglot) exercise the same language-agnostic receipt flow. CI runs the core suite on Linux, macOS, and Windows, then verifies the composite Action end to end on all three runner families.
 
-The research and product boundary are documented in [docs/research.md](docs/research.md); architectural decisions and the AI extension boundary are in [docs/architecture.md](docs/architecture.md). External dogfood evidence follows the reviewable template in [docs/case-studies/README.md](docs/case-studies/README.md), and broad promotion is gated by [docs/launch-readiness.md](docs/launch-readiness.md).
+The research and product boundary are documented in [docs/research.md](docs/research.md); architectural decisions and the AI extension boundary are in [docs/architecture.md](docs/architecture.md). External dogfood evidence, including the first [PyTorch case study](docs/case-studies/pytorch-192284/README.md), follows the reviewable template in [docs/case-studies/README.md](docs/case-studies/README.md), and broad promotion is gated by [docs/launch-readiness.md](docs/launch-readiness.md).
+
+## Support
+
+Usage questions and suspected bugs follow [SUPPORT.md](SUPPORT.md). Security-sensitive reports, especially possible redaction bypasses, must follow [SECURITY.md](SECURITY.md) instead of a public issue. IssueProof is a public alpha with no guaranteed support SLA.
 
 ## Status
 

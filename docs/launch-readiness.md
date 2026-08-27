@@ -15,7 +15,7 @@ Pushing a repository is not a launch. IssueProof earns a broad launch after a st
 - [x] One published case study that states limitations and does not overclaim the verdict.
 - [ ] Two maintainers or agent-tool users complete the quick start without live help.
 - [ ] GitHub Marketplace listing is published from a release.
-- [ ] Support path, response expectations, and known limitations are easy to find.
+- [x] Support path, response expectations, and known limitations are easy to find.
 
 ## Channel order
 
