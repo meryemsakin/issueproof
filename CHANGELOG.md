@@ -2,6 +2,16 @@
 
 All notable changes are documented here. The project follows semantic versioning after the first public release; pre-release schemas may still change with an explicit version bump.
 
+## Unreleased
+
+## 0.3.0 — 2026-08-27
+
+- Add optional per-attempt Git worktree isolation from committed `HEAD`.
+- Terminate timed-out POSIX process groups and Windows process trees, including descendant workers.
+- Add an adversarial failure-fingerprint regression corpus with explicit merge/separation decisions.
+- Make named issue-evidence checks primary and label the retained numeric score as uncalibrated.
+- Add external dogfood, case-study, and launch-readiness gates.
+
 ## 0.2.1 — 2026-08-26
 
 - Verify the core CLI and composite Action across Linux, macOS, and Windows.

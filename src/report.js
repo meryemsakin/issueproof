@@ -30,12 +30,13 @@ export function renderMarkdown(receipt) {
     "",
     `- Expected outcome: ${receipt.reproduction.expectation}`,
     `- Attempts: ${receipt.reproduction.attemptsCompleted}/${receipt.reproduction.attemptsRequested}`,
+    `- Isolation: ${receipt.reproduction.isolation ?? "tracked"}`,
     `- Command: \`${[receipt.reproduction.command.executable, ...receipt.reproduction.command.args].map(shellQuote).join(" ")}\``,
     "",
-    "| Run | Exit | Duration | Signature | Repo changed |",
-    "| ---: | ---: | ---: | --- | --- |",
+    "| Run | Exit | Duration | Signature | Repo changed | Affects next run |",
+    "| ---: | ---: | ---: | --- | --- | --- |",
     ...receipt.runs.map(
-      (run) => `| ${run.attempt} | ${run.exitCode} | ${run.durationMs} ms | \`${run.fingerprint.slice(0, 12)}\` | ${icon(run.stateChanged)} |`,
+      (run) => `| ${run.attempt} | ${run.exitCode} | ${run.durationMs} ms | \`${run.fingerprint.slice(0, 12)}\` | ${icon(run.stateChanged)} | ${icon(run.stateContaminated ?? run.stateChanged)} |`,
     ),
   ];
 
@@ -44,13 +45,16 @@ export function renderMarkdown(receipt) {
       "",
       "## Issue evidence",
       "",
-      `Heuristic readiness: **${receipt.issueAssessment.score}/100 (${receipt.issueAssessment.band})**`,
+      `Required checklist: **${receipt.issueAssessment.checklist?.requiredPresent ?? 0}/${receipt.issueAssessment.checklist?.requiredTotal ?? 0} present (${receipt.issueAssessment.band})**`,
+      `Optional agent context: **${receipt.issueAssessment.checklist?.optionalPresent ?? 0}/${receipt.issueAssessment.checklist?.optionalTotal ?? 0} present**`,
       "",
-      "| Evidence | Present | Weight |",
-      "| --- | --- | ---: |",
+      "| Evidence | Required | Present |",
+      "| --- | --- | --- |",
       ...receipt.issueAssessment.checks.map(
-        (check) => `| ${check.label} | ${icon(check.present)} | ${check.weight} |`,
+        (check) => `| ${check.label} | ${icon(check.required)} | ${icon(check.present)} |`,
       ),
+      "",
+      `Uncalibrated compatibility score: ${receipt.issueAssessment.score}/100`,
     );
     const missing = receipt.issueAssessment.checks.filter((check) => !check.present);
     if (missing.length > 0) {
@@ -76,6 +80,8 @@ export function renderMarkdown(receipt) {
       `- Commit: \`${receipt.git.commit ?? "unknown"}\``,
       `- Branch: \`${receipt.git.branch ?? "detached"}\``,
       `- Initially dirty: ${icon(receipt.git.initiallyDirty)}`,
+      `- Isolation mode: ${receipt.git.isolationMode ?? "tracked"}`,
+      `- Attempts that changed tracked state: ${receipt.git.attemptsChangedState ?? 0}`,
       `- State changed while reproducing: ${icon(receipt.git.changedDuringVerification)}`,
     );
   }

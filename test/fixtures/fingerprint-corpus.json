@@ -1,0 +1,94 @@
+{
+  "equivalent": [
+    {
+      "name": "timestamps, durations, and process identifiers are volatile",
+      "exitCode": 1,
+      "samples": [
+        "2026-08-27T09:12:10.123Z Error: worker failed after 30.4 seconds pid=314",
+        "2026-08-27T09:13:55.987Z Error: worker failed after 41.8 seconds pid=842"
+      ]
+    },
+    {
+      "name": "memory addresses and UUIDs do not define failure identity",
+      "exitCode": 1,
+      "samples": [
+        "Fatal: allocation owner 550e8400-e29b-41d4-a716-446655440000 at 0x7ffee12a",
+        "Fatal: allocation owner f47ac10b-58cc-4372-a567-0e02b2c3d479 at 0x1abc9930"
+      ]
+    },
+    {
+      "name": "clock-only log prefixes are volatile",
+      "exitCode": 2,
+      "samples": [
+        "10:11:12 Error: parser initialization failed",
+        "23:59:58 Error: parser initialization failed"
+      ]
+    },
+    {
+      "name": "millisecond timing changes preserve the assertion",
+      "exitCode": 1,
+      "samples": [
+        "AssertionError: request did not settle in 18 milliseconds",
+        "AssertionError: request did not settle in 901 milliseconds"
+      ]
+    },
+    {
+      "name": "process wording variants with numeric identifiers normalize",
+      "exitCode": 1,
+      "samples": [
+        "Error: process: 44 exited before handshake",
+        "Error: process=901 exited before handshake"
+      ]
+    },
+    {
+      "name": "Python unittest elapsed seconds are volatile",
+      "exitCode": 1,
+      "samples": [
+        "ERROR: test_parser\nRuntimeError: invalid token\nRan 1 test in 0.941s\nFAILED (errors=1)",
+        "ERROR: test_parser\nRuntimeError: invalid token\nRan 1 test in 1.207s\nFAILED (errors=1)"
+      ]
+    }
+  ],
+  "distinct": [
+    {
+      "name": "different error messages must not merge",
+      "left": { "exitCode": 1, "output": "Error: parser rejected token" },
+      "right": { "exitCode": 1, "output": "Error: database connection refused" }
+    },
+    {
+      "name": "different exit codes remain distinct",
+      "left": { "exitCode": 1, "output": "Error: command failed" },
+      "right": { "exitCode": 2, "output": "Error: command failed" }
+    },
+    {
+      "name": "domain identifiers are evidence rather than generic volatility",
+      "left": { "exitCode": 1, "output": "Error: expected user 314, got user 842" },
+      "right": { "exitCode": 1, "output": "Error: expected user 814, got user 223" }
+    },
+    {
+      "name": "exception classes remain distinct",
+      "left": { "exitCode": 1, "output": "TypeError: value is not iterable" },
+      "right": { "exitCode": 1, "output": "RangeError: value is not iterable" }
+    },
+    {
+      "name": "source locations remain conservative identity evidence",
+      "left": { "exitCode": 1, "output": "Error: invalid state\n    at parser.js:42:7" },
+      "right": { "exitCode": 1, "output": "Error: invalid state\n    at parser.js:91:7" }
+    },
+    {
+      "name": "asserted values remain distinct",
+      "left": { "exitCode": 1, "output": "AssertionError: expected 4 to equal 5" },
+      "right": { "exitCode": 1, "output": "AssertionError: expected 4 to equal 9" }
+    },
+    {
+      "name": "panic causes remain distinct",
+      "left": { "exitCode": 2, "output": "panic: index out of range" },
+      "right": { "exitCode": 2, "output": "panic: concurrent map writes" }
+    },
+    {
+      "name": "random ports are intentionally not normalized without framework context",
+      "left": { "exitCode": 1, "output": "Error: EADDRINUSE 127.0.0.1:4317" },
+      "right": { "exitCode": 1, "output": "Error: EADDRINUSE 127.0.0.1:8080" }
+    }
+  ]
+}

@@ -32,6 +32,21 @@ test("rejects a run that changes tracked repository state", () => {
   assert.equal(result.verdict, "contaminated");
 });
 
+test("allows tracked changes that are contained in an isolated attempt", () => {
+  const result = classifyRuns([
+    run(1, "same", { stateChanged: true, stateContaminated: false }),
+    run(1, "same", { stateChanged: true, stateContaminated: false }),
+  ]);
+  assert.equal(result.verdict, "stable_failure");
+  assert.equal(result.verified, true);
+});
+
+test("rejects an isolated attempt whose cleanup failed", () => {
+  const result = classifyRuns([run(1, "same", { isolationCleanupError: "cleanup failed" })]);
+  assert.equal(result.verdict, "isolation_error");
+  assert.equal(result.verified, false);
+});
+
 test("does not claim stability from a single observation", () => {
   const result = classifyRuns([run(1, "a")]);
   assert.equal(result.verdict, "observed_failure");

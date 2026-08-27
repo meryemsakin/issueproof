@@ -5,6 +5,7 @@ import { assessIssue } from "../src/readiness.js";
 test("reports missing evidence rather than inventing it", () => {
   const assessment = assessIssue("The app is broken.");
   assert.equal(assessment.band, "insufficient");
+  assert.ok(assessment.checklist.missingRequired.length > 0);
   assert.ok(assessment.checks.some((check) => !check.present && check.suggestion));
 });
 
@@ -20,4 +21,6 @@ Root cause may be in function parseExpression; possible fix is an empty-input gu
 `);
   assert.equal(assessment.score, 100);
   assert.equal(assessment.band, "ready");
+  assert.deepEqual(assessment.checklist.missingRequired, []);
+  assert.equal(assessment.checklist.requiredPresent, assessment.checklist.requiredTotal);
 });

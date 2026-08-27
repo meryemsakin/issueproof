@@ -1,6 +1,6 @@
 {
   "name": "issueproof",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Verify that a bug reproduction is stable and produce an agent-ready evidence receipt.",
   "author": "Meryem Sakin",
   "repository": {
@@ -25,6 +25,7 @@
     "action.yml",
     "CHANGELOG.md",
     "SECURITY.md",
+    "SUPPORT.md",
     "README.md",
     "LICENSE"
   ],

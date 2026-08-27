@@ -9,7 +9,7 @@ export function normalizeFailureOutput(value) {
     .replace(/\b(?:pid|process)\s*[=:]?\s*\d+\b/gi, "pid=<pid>")
     .replace(/\b0x[0-9a-f]+\b/gi, "<address>")
     .replace(/\b[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\b/gi, "<uuid>")
-    .replace(/\b\d+(?:\.\d+)?\s*(?:ms|milliseconds?|seconds?|secs?)\b/gi, "<duration>")
+    .replace(/\b\d+(?:\.\d+)?\s*(?:ms|milliseconds?|seconds?|secs?|s)\b/gi, "<duration>")
     .replace(/[ \t]+/g, " ")
     .trim();
 }
