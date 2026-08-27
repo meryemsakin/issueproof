@@ -4,6 +4,8 @@ All notable changes are documented here. The project follows semantic versioning
 
 ## Unreleased
 
+- Add a reviewed ten-repository compatibility matrix and controlled Go 1.27/GJSON evidence.
+
 ## 0.3.0 — 2026-08-27
 
 - Add optional per-attempt Git worktree isolation from committed `HEAD`.

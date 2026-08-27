@@ -1,0 +1,140 @@
+{
+  "schemaVersion": "1.0",
+  "id": "20260827T160240Z-ccceae",
+  "createdAt": "2026-08-27T16:02:40.611Z",
+  "tool": {
+    "name": "issueproof",
+    "version": "0.3.0"
+  },
+  "reproduction": {
+    "expectation": "pass",
+    "attemptsRequested": 2,
+    "attemptsCompleted": 2,
+    "timeoutMs": 120000,
+    "maxOutputBytes": 65536,
+    "isolation": "tracked",
+    "command": {
+      "executable": "go",
+      "args": [
+        "test",
+        "-v",
+        "."
+      ]
+    }
+  },
+  "verdict": {
+    "name": "verified_pass",
+    "verified": true,
+    "summary": "All 2 runs passed."
+  },
+  "runs": [
+    {
+      "attempt": 1,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T16:02:24.889Z",
+      "endedAt": "2026-08-27T16:02:40.451Z",
+      "durationMs": 15562,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "76782d23a3de7f3beb1c102e7a1387e7bc0bb3fe54162cd09e1de787133fcbf7",
+      "signature": "=== RUN TestParseIndex\n--- PASS: TestParseIndex (<duration>)\n=== RUN TestRevSquash\n--- PASS: TestRevSquash (<duration>)\n=== RUN TestQueryGetPath\n--- PASS: TestQueryGetPath (<duration>)\n=== RUN TestStaticJSON\n--- PASS: TestStaticJSON (<duration>)\n=== RUN TestArrayKeys\n--- PASS: TestArrayKeys (<duration>)\n=== RUN TestToFromStr\n--- PASS: TestToFromStr (<duration>)\n=== RUN TestGroup\n--- PASS: TestGroup (<duration>)\n=== RUN TestJSONString\n--- PASS: TestJSONString (<duration>)\n=== RUN TestIndexAtSymbol\n--- PASS: TestIndexAtSymbol (<duration>)\n=== RUN TestDeepModifierWithOptions\n--- PASS: TestDeepModifierWithOptions (<duration>)\n=== RUN TestIssue301\n--- PASS: TestIssue301 (<duration>)\n=== RUN TestModDig\n--- PASS: TestModDig (<duration>)\n=== RUN TestEscape\n--- PASS: TestEscape (<duration>)\n=== RUN TestIter\n--- PASS: TestIter (<duration>)\nPASS\nok github.com/tidwall/gjson <duration>",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "=== RUN   TestRandomData\n--- PASS: TestRandomData (0.82s)\n=== RUN   TestRandomValidStrings\n--- PASS: TestRandomValidStrings (0.85s)\n=== RUN   TestEmoji\n--- PASS: TestEmoji (0.00s)\n=== RUN   TestEscapePath\n--- PASS: TestEscapePath (0.00s)\n=== RUN   TestPath\n--- PASS: TestPath (0.00s)\n=== RUN   TestTimeResult\n--- PASS: TestTimeResult (0.00s)\n=== RUN   TestParseAny\n--- PASS: TestParseAny (0.00s)\n=== RUN   TestManyVariousPathCounts\n--- PASS: TestManyVariousPathCounts (0.00s)\n=== RUN   TestManyRecursion\n--- PASS: TestManyRecursion (0.00s)\n=== RUN   TestByteSafety\n--- PASS: TestByteSafety (0.00s)\n=== RUN   TestBasic\n--- PASS: TestBasic (0.00s)\n=== RUN   TestIsArrayIsObject\n--- PASS: TestIsArrayIsObject (0.00s)\n=== RUN   TestPlus53BitInts\n--- PASS: TestPlus53BitInts (0.00s)\n=== RUN   TestIssue38\n--- PASS: TestIssue38 (0.00s)\n=== RUN   TestTypes\n--- PASS: TestTypes (0.00s)\n=== RUN   TestForEach\n--- PASS: TestForEach (0.00s)\n=== RUN   TestMap\n--- PASS: TestMap (0.00s)\n=== RUN   TestBasic1\n--- PASS: TestBasic1 (0.00s)\n=== RUN   TestBasic2\n--- PASS: TestBasic2 (0.00s)\n=== RUN   TestBasic3\n--- PASS: TestBasic3 (0.00s)\n=== RUN   TestBasic4\n--- PASS: TestBasic4 (0.00s)\n=== RUN   TestBasic5\n--- PASS: TestBasic5 (0.00s)\n=== RUN   TestUnicode\n--- PASS: TestUnicode (0.00s)\n=== RUN   TestUnescape\n--- PASS: TestUnescape (0.00s)\n=== RUN   TestLess\n--- PASS: TestLess (0.00s)\n=== RUN   TestIssue6\n--- PASS: TestIssue6 (0.00s)\n=== RUN   TestUnmarshalMap\n--- PASS: TestUnmarshalMap (0.00s)\n=== RUN   TestSingleArrayValue\n--- PASS: TestSingleArrayValue (0.00s)\n=== RUN   TestManyBasic\n--- PASS: TestManyBasic (0.00s)\n=== RUN   TestIssue20\n=== RUN   TestIssue20/SingleMany\n--- PASS: TestIssue20 (0.00s)\n    --- PASS: TestIssue20/SingleMany (0.00s)\n=== RUN   TestIssue21\n=== RUN   TestIssue21/SingleMany\n--- PASS: TestIssue21 (0.00s)\n    --- PASS: TestIssue21/SingleMany (0.00s)\n=== RUN   TestRandomMany\n--- PASS: TestRandomMany (0.70s)\n=== RUN   TestValidBasic\n--- PASS: TestValidBasic (0.00s)\n=== RUN   TestValidRandom\n--- PASS: TestValidRandom (6.00s)\n=== RUN   TestGetMany47\n--- PASS: TestGetMany47 (0.00s)\n=== RUN   TestGetMany48\n--- PASS: TestGetMany48 (0.00s)\n=== RUN   TestResultRawForLiteral\n--- PASS: TestResultRawForLiteral (0.00s)\n=== RUN   TestNullArray\n--- PASS: TestNullArray (0.00s)\n=== RUN   TestIssue54\n--- PASS: TestIssue54 (0.00s)\n=== RUN   TestIssue55\n--- PASS: TestIssue55 (0.00s)\n=== RUN   TestIssue58\n--- PASS: TestIssue58 (0.00s)\n=== RUN   TestObjectGrouping\n--- PASS: TestObjectGrouping (0.00s)\n=== RUN   TestJSONLines\n--- PASS: TestJSONLines (0.00s)\n=== RUN   TestNumUint64String\n--- PASS: TestNumUint64String (0.00s)\n=== RUN   TestNumInt64String\n--- PASS: TestNumInt64String (0.00s)\n=== RUN   TestNumBigString\n--- PASS: TestNumBigString (0.00s)\n=== RUN   TestNumFloatString\n--- PASS: TestNumFloatString (0.00s)\n=== RUN   TestDuplicateKeys\n--- PASS: TestDuplicateKeys (0.00s)\n=== RUN   TestArrayValues\n--- PASS: TestArrayValues (0.00s)\n=== RUN   TestModifier\n--- PASS: TestModifier (0.00s)\n=== RUN   TestChaining\n--- PASS: TestChaining (0.00s)\n=== RUN   TestSplitPipe\n--- PASS: TestSplitPipe (0.00s)\n=== RUN   TestArrayEx\n--- PASS: TestArrayEx (0.00s)\n=== RUN   TestPipeDotMixing\n--- PASS: TestPipeDotMixing (0.00s)\n=== RUN   TestDeepSelectors\n--- PASS: TestDeepSelectors (0.00s)\n=== RUN   TestMultiArrayEx\n--- PASS: TestMultiArrayEx (0.00s)\n=== RUN   TestQueries\n--- PASS: TestQueries (0.00s)\n=== RUN   TestQueryArrayValues\n--- PASS: TestQueryArrayValues (0.00s)\n=== RUN   TestParenQueries\n--- PASS: TestParenQueries (0.00s)\n=== RUN   TestSubSelectors\n--- PASS: TestSubSelectors (0.00s)\n=== RUN   TestArrayCountRawOutput\n--- PASS: TestArrayCountRawOutput (0.00s)\n=== RUN   TestParseQuery\n--- PASS: TestParseQuery (0.00s)\n=== RUN   TestParentSubQuery\n--- PASS: TestParentSubQuery (0.00s)\n=== RUN   TestSingleModifier\n--- PASS: TestSingleModifier (0.00s)\n=== RUN   TestModifiersInMultipaths\n--- PASS: TestModifiersInMultipaths (0.00s)\n=== RUN   TestIssue141\n--- PASS: TestIssue141 (0.00s)\n=== RUN   TestChainedModifierStringArgs\n--- PASS: TestChainedModifierStringArgs (0.00s)\n=== RUN   TestFlatten\n--- PASS: TestFlatten (0.00s)\n=== RUN   TestJoin\n--- PASS: TestJoin (0.00s)\n=== RUN   TestValid\n--- PASS: TestValid (0.00s)\n=== RUN   TestJoin152\n--- PASS: TestJoin152 (0.00s)\n=== RUN   TestVariousFuzz\n--- PASS: TestVariousFuzz (0.01s)\n=== RUN   TestSubpathsWithMultipaths\n--- PASS: TestSubpathsWithMultipaths (0.00s)\n=== RUN   TestFlattenRemoveNonExist\n--- PASS: TestFlattenRemoveNonExist (0.00s)\n=== RUN   TestPipeEmptyArray\n--- PASS: TestPipeEmptyArray (0.00s)\n=== RUN   TestEncodedQueryString\n--- PASS: TestEncodedQueryString (0.00s)\n=== RUN   TestTildeQueries\n--- PASS: TestTildeQueries (0.00s)\n=== RUN   TestModifierDoubleQuotes\n--- PASS: TestModifierDoubleQuotes (0.00s)\n=== RUN   TestIndexes\n--- PASS: TestIndexes (0.00s)\n=== RUN   TestIndexesMatchesRaw\n--- PASS: TestIndexesMatchesRaw (0.00s)\n=== RUN   TestIssue240\n--- PASS: TestIssue240 (0.00s)\n=== RUN   TestKeysValuesModifier\n--- PASS: TestKeysValuesModifier (0.00s)\n=== RUN   TestNaNInf\n--- PASS: TestNaNInf (0.00s)\n=== RUN   TestEmptyValueQuery\n--- PASS: TestEmptyValueQuery (0.00s)\n=== RUN   TestParseIndex\n--- PASS: TestParseIndex (0.00s)\n=== RUN   TestRevSquash\n--- PASS: TestRevSquash (0.00s)\n=== RUN   TestQueryGetPath\n--- PASS: TestQueryGetPath (0.00s)\n=== RUN   TestStaticJSON\n--- PASS: TestStaticJSON (0.00s)\n=== RUN   TestArrayKeys\n--- PASS: TestArrayKeys (0.00s)\n=== RUN   TestToFromStr\n--- PASS: TestToFromStr (0.00s)\n=== RUN   TestGroup\n--- PASS: TestGroup (0.00s)\n=== RUN   TestJSONString\n--- PASS: TestJSONString (2.00s)\n=== RUN   TestIndexAtSymbol\n--- PASS: TestIndexAtSymbol (0.00s)\n=== RUN   TestDeepModifierWithOptions\n--- PASS: TestDeepModifierWithOptions (0.00s)\n=== RUN   TestIssue301\n--- PASS: TestIssue301 (0.00s)\n=== RUN   TestModDig\n--- PASS: TestModDig (0.00s)\n=== RUN   TestEscape\n--- PASS: TestEscape (0.00s)\n=== RUN   TestIter\n--- PASS: TestIter (0.00s)\nPASS\nok  \tgithub.com/tidwall/gjson\t10.729s\n",
+        "totalBytes": 6011,
+        "omittedBytes": 0
+      }
+    },
+    {
+      "attempt": 2,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T16:02:40.484Z",
+      "endedAt": "2026-08-27T16:02:40.581Z",
+      "durationMs": 97,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "85a833d94da6a90389a9a6dc5226ee237cbc27a9e372748b05b19cc9b2f98ebc",
+      "signature": "=== RUN TestParseIndex\n--- PASS: TestParseIndex (<duration>)\n=== RUN TestRevSquash\n--- PASS: TestRevSquash (<duration>)\n=== RUN TestQueryGetPath\n--- PASS: TestQueryGetPath (<duration>)\n=== RUN TestStaticJSON\n--- PASS: TestStaticJSON (<duration>)\n=== RUN TestArrayKeys\n--- PASS: TestArrayKeys (<duration>)\n=== RUN TestToFromStr\n--- PASS: TestToFromStr (<duration>)\n=== RUN TestGroup\n--- PASS: TestGroup (<duration>)\n=== RUN TestJSONString\n--- PASS: TestJSONString (<duration>)\n=== RUN TestIndexAtSymbol\n--- PASS: TestIndexAtSymbol (<duration>)\n=== RUN TestDeepModifierWithOptions\n--- PASS: TestDeepModifierWithOptions (<duration>)\n=== RUN TestIssue301\n--- PASS: TestIssue301 (<duration>)\n=== RUN TestModDig\n--- PASS: TestModDig (<duration>)\n=== RUN TestEscape\n--- PASS: TestEscape (<duration>)\n=== RUN TestIter\n--- PASS: TestIter (<duration>)\nPASS\nok github.com/tidwall/gjson (cached)",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "=== RUN   TestRandomData\n--- PASS: TestRandomData (0.82s)\n=== RUN   TestRandomValidStrings\n--- PASS: TestRandomValidStrings (0.85s)\n=== RUN   TestEmoji\n--- PASS: TestEmoji (0.00s)\n=== RUN   TestEscapePath\n--- PASS: TestEscapePath (0.00s)\n=== RUN   TestPath\n--- PASS: TestPath (0.00s)\n=== RUN   TestTimeResult\n--- PASS: TestTimeResult (0.00s)\n=== RUN   TestParseAny\n--- PASS: TestParseAny (0.00s)\n=== RUN   TestManyVariousPathCounts\n--- PASS: TestManyVariousPathCounts (0.00s)\n=== RUN   TestManyRecursion\n--- PASS: TestManyRecursion (0.00s)\n=== RUN   TestByteSafety\n--- PASS: TestByteSafety (0.00s)\n=== RUN   TestBasic\n--- PASS: TestBasic (0.00s)\n=== RUN   TestIsArrayIsObject\n--- PASS: TestIsArrayIsObject (0.00s)\n=== RUN   TestPlus53BitInts\n--- PASS: TestPlus53BitInts (0.00s)\n=== RUN   TestIssue38\n--- PASS: TestIssue38 (0.00s)\n=== RUN   TestTypes\n--- PASS: TestTypes (0.00s)\n=== RUN   TestForEach\n--- PASS: TestForEach (0.00s)\n=== RUN   TestMap\n--- PASS: TestMap (0.00s)\n=== RUN   TestBasic1\n--- PASS: TestBasic1 (0.00s)\n=== RUN   TestBasic2\n--- PASS: TestBasic2 (0.00s)\n=== RUN   TestBasic3\n--- PASS: TestBasic3 (0.00s)\n=== RUN   TestBasic4\n--- PASS: TestBasic4 (0.00s)\n=== RUN   TestBasic5\n--- PASS: TestBasic5 (0.00s)\n=== RUN   TestUnicode\n--- PASS: TestUnicode (0.00s)\n=== RUN   TestUnescape\n--- PASS: TestUnescape (0.00s)\n=== RUN   TestLess\n--- PASS: TestLess (0.00s)\n=== RUN   TestIssue6\n--- PASS: TestIssue6 (0.00s)\n=== RUN   TestUnmarshalMap\n--- PASS: TestUnmarshalMap (0.00s)\n=== RUN   TestSingleArrayValue\n--- PASS: TestSingleArrayValue (0.00s)\n=== RUN   TestManyBasic\n--- PASS: TestManyBasic (0.00s)\n=== RUN   TestIssue20\n=== RUN   TestIssue20/SingleMany\n--- PASS: TestIssue20 (0.00s)\n    --- PASS: TestIssue20/SingleMany (0.00s)\n=== RUN   TestIssue21\n=== RUN   TestIssue21/SingleMany\n--- PASS: TestIssue21 (0.00s)\n    --- PASS: TestIssue21/SingleMany (0.00s)\n=== RUN   TestRandomMany\n--- PASS: TestRandomMany (0.70s)\n=== RUN   TestValidBasic\n--- PASS: TestValidBasic (0.00s)\n=== RUN   TestValidRandom\n--- PASS: TestValidRandom (6.00s)\n=== RUN   TestGetMany47\n--- PASS: TestGetMany47 (0.00s)\n=== RUN   TestGetMany48\n--- PASS: TestGetMany48 (0.00s)\n=== RUN   TestResultRawForLiteral\n--- PASS: TestResultRawForLiteral (0.00s)\n=== RUN   TestNullArray\n--- PASS: TestNullArray (0.00s)\n=== RUN   TestIssue54\n--- PASS: TestIssue54 (0.00s)\n=== RUN   TestIssue55\n--- PASS: TestIssue55 (0.00s)\n=== RUN   TestIssue58\n--- PASS: TestIssue58 (0.00s)\n=== RUN   TestObjectGrouping\n--- PASS: TestObjectGrouping (0.00s)\n=== RUN   TestJSONLines\n--- PASS: TestJSONLines (0.00s)\n=== RUN   TestNumUint64String\n--- PASS: TestNumUint64String (0.00s)\n=== RUN   TestNumInt64String\n--- PASS: TestNumInt64String (0.00s)\n=== RUN   TestNumBigString\n--- PASS: TestNumBigString (0.00s)\n=== RUN   TestNumFloatString\n--- PASS: TestNumFloatString (0.00s)\n=== RUN   TestDuplicateKeys\n--- PASS: TestDuplicateKeys (0.00s)\n=== RUN   TestArrayValues\n--- PASS: TestArrayValues (0.00s)\n=== RUN   TestModifier\n--- PASS: TestModifier (0.00s)\n=== RUN   TestChaining\n--- PASS: TestChaining (0.00s)\n=== RUN   TestSplitPipe\n--- PASS: TestSplitPipe (0.00s)\n=== RUN   TestArrayEx\n--- PASS: TestArrayEx (0.00s)\n=== RUN   TestPipeDotMixing\n--- PASS: TestPipeDotMixing (0.00s)\n=== RUN   TestDeepSelectors\n--- PASS: TestDeepSelectors (0.00s)\n=== RUN   TestMultiArrayEx\n--- PASS: TestMultiArrayEx (0.00s)\n=== RUN   TestQueries\n--- PASS: TestQueries (0.00s)\n=== RUN   TestQueryArrayValues\n--- PASS: TestQueryArrayValues (0.00s)\n=== RUN   TestParenQueries\n--- PASS: TestParenQueries (0.00s)\n=== RUN   TestSubSelectors\n--- PASS: TestSubSelectors (0.00s)\n=== RUN   TestArrayCountRawOutput\n--- PASS: TestArrayCountRawOutput (0.00s)\n=== RUN   TestParseQuery\n--- PASS: TestParseQuery (0.00s)\n=== RUN   TestParentSubQuery\n--- PASS: TestParentSubQuery (0.00s)\n=== RUN   TestSingleModifier\n--- PASS: TestSingleModifier (0.00s)\n=== RUN   TestModifiersInMultipaths\n--- PASS: TestModifiersInMultipaths (0.00s)\n=== RUN   TestIssue141\n--- PASS: TestIssue141 (0.00s)\n=== RUN   TestChainedModifierStringArgs\n--- PASS: TestChainedModifierStringArgs (0.00s)\n=== RUN   TestFlatten\n--- PASS: TestFlatten (0.00s)\n=== RUN   TestJoin\n--- PASS: TestJoin (0.00s)\n=== RUN   TestValid\n--- PASS: TestValid (0.00s)\n=== RUN   TestJoin152\n--- PASS: TestJoin152 (0.00s)\n=== RUN   TestVariousFuzz\n--- PASS: TestVariousFuzz (0.01s)\n=== RUN   TestSubpathsWithMultipaths\n--- PASS: TestSubpathsWithMultipaths (0.00s)\n=== RUN   TestFlattenRemoveNonExist\n--- PASS: TestFlattenRemoveNonExist (0.00s)\n=== RUN   TestPipeEmptyArray\n--- PASS: TestPipeEmptyArray (0.00s)\n=== RUN   TestEncodedQueryString\n--- PASS: TestEncodedQueryString (0.00s)\n=== RUN   TestTildeQueries\n--- PASS: TestTildeQueries (0.00s)\n=== RUN   TestModifierDoubleQuotes\n--- PASS: TestModifierDoubleQuotes (0.00s)\n=== RUN   TestIndexes\n--- PASS: TestIndexes (0.00s)\n=== RUN   TestIndexesMatchesRaw\n--- PASS: TestIndexesMatchesRaw (0.00s)\n=== RUN   TestIssue240\n--- PASS: TestIssue240 (0.00s)\n=== RUN   TestKeysValuesModifier\n--- PASS: TestKeysValuesModifier (0.00s)\n=== RUN   TestNaNInf\n--- PASS: TestNaNInf (0.00s)\n=== RUN   TestEmptyValueQuery\n--- PASS: TestEmptyValueQuery (0.00s)\n=== RUN   TestParseIndex\n--- PASS: TestParseIndex (0.00s)\n=== RUN   TestRevSquash\n--- PASS: TestRevSquash (0.00s)\n=== RUN   TestQueryGetPath\n--- PASS: TestQueryGetPath (0.00s)\n=== RUN   TestStaticJSON\n--- PASS: TestStaticJSON (0.00s)\n=== RUN   TestArrayKeys\n--- PASS: TestArrayKeys (0.00s)\n=== RUN   TestToFromStr\n--- PASS: TestToFromStr (0.00s)\n=== RUN   TestGroup\n--- PASS: TestGroup (0.00s)\n=== RUN   TestJSONString\n--- PASS: TestJSONString (2.00s)\n=== RUN   TestIndexAtSymbol\n--- PASS: TestIndexAtSymbol (0.00s)\n=== RUN   TestDeepModifierWithOptions\n--- PASS: TestDeepModifierWithOptions (0.00s)\n=== RUN   TestIssue301\n--- PASS: TestIssue301 (0.00s)\n=== RUN   TestModDig\n--- PASS: TestModDig (0.00s)\n=== RUN   TestEscape\n--- PASS: TestEscape (0.00s)\n=== RUN   TestIter\n--- PASS: TestIter (0.00s)\nPASS\nok  \tgithub.com/tidwall/gjson\t(cached)\n",
+        "totalBytes": 6012,
+        "omittedBytes": 0
+      }
+    }
+  ],
+  "environment": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.4.0",
+    "cpuModel": "Apple M5",
+    "ci": true,
+    "runtimes": {
+      "node": "v24.19.0",
+      "npm": "11.12.1",
+      "python": "Python 3.14.4",
+      "pip": "pip 26.0.1 from /opt/homebrew/lib/python3.14/site-packages/pip (python 3.14)",
+      "go": "go version go1.26.2 darwin/arm64",
+      "git": "git version 2.54.0"
+    }
+  },
+  "git": {
+    "available": true,
+    "commit": "7d8b3821e9d2acf35e8a226b63fcf801078e9b96",
+    "branch": "master",
+    "initiallyDirty": false,
+    "isolationMode": "tracked",
+    "isolatedAttempts": false,
+    "changedPaths": [],
+    "changedDuringVerification": false,
+    "attemptsChangedState": 0
+  },
+  "issue": null,
+  "issueAssessment": null,
+  "privacy": {
+    "persistedEnvironmentValues": false,
+    "uploadPerformed": false,
+    "redactionCount": 0,
+    "redactions": []
+  },
+  "limitations": [
+    "This is an observation from one machine, not proof of the root cause.",
+    "A stable failure signature does not guarantee identical behavior in another environment.",
+    "Issue readiness is a deterministic heuristic, not a repair-success prediction.",
+    "The SHA-256 integrity checksum is not a digital signature or proof of authorship.",
+    "Tracked isolation does not reset untracked or ignored files between attempts."
+  ],
+  "integrity": {
+    "algorithm": "sha256",
+    "payloadHash": "e126af3b14589573a2e385de611ae6decb0e594cfe74e6bc59d84f1ab9d33c42",
+    "scope": "canonical JSON excluding the integrity field"
+  }
+}

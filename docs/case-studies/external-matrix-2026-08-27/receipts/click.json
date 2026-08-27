@@ -1,0 +1,144 @@
+{
+  "schemaVersion": "1.0",
+  "id": "20260827T155621Z-3e8cb1",
+  "createdAt": "2026-08-27T15:56:21.422Z",
+  "tool": {
+    "name": "issueproof",
+    "version": "0.3.0"
+  },
+  "reproduction": {
+    "expectation": "pass",
+    "attemptsRequested": 2,
+    "attemptsCompleted": 2,
+    "timeoutMs": 120000,
+    "maxOutputBytes": 65536,
+    "isolation": "tracked",
+    "command": {
+      "executable": ".venv/bin/python",
+      "args": [
+        "-m",
+        "pytest",
+        "tests/test_basic.py"
+      ]
+    }
+  },
+  "verdict": {
+    "name": "verified_pass",
+    "verified": true,
+    "summary": "All 2 runs passed."
+  },
+  "runs": [
+    {
+      "attempt": 1,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T15:56:20.726Z",
+      "endedAt": "2026-08-27T15:56:21.101Z",
+      "durationMs": 375,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "8a5d2dbf5593bdcb545680f4f9a4a343b17440a67186060033618189b8f22ae8",
+      "signature": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0\nrootdir: <repo>\nconfigfile: pyproject.toml\ncollected 102 items\ntests/test_basic.py .................................................... [ 50%]\n.................................................. [100%]\n============================= 102 passed in <duration> ==============================",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0\nrootdir: <repo>\nconfigfile: pyproject.toml\ncollected 102 items\n\ntests/test_basic.py .................................................... [ 50%]\n..................................................                       [100%]\n\n============================= 102 passed in 0.14s ==============================\n",
+        "totalBytes": 491,
+        "omittedBytes": 0
+      }
+    },
+    {
+      "attempt": 2,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T15:56:21.134Z",
+      "endedAt": "2026-08-27T15:56:21.384Z",
+      "durationMs": 250,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "8a5d2dbf5593bdcb545680f4f9a4a343b17440a67186060033618189b8f22ae8",
+      "signature": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0\nrootdir: <repo>\nconfigfile: pyproject.toml\ncollected 102 items\ntests/test_basic.py .................................................... [ 50%]\n.................................................. [100%]\n============================= 102 passed in <duration> ==============================",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.12, pytest-9.1.1, pluggy-1.6.0\nrootdir: <repo>\nconfigfile: pyproject.toml\ncollected 102 items\n\ntests/test_basic.py .................................................... [ 50%]\n..................................................                       [100%]\n\n============================= 102 passed in 0.09s ==============================\n",
+        "totalBytes": 491,
+        "omittedBytes": 0
+      }
+    }
+  ],
+  "environment": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.4.0",
+    "cpuModel": "Apple M5",
+    "ci": true,
+    "runtimes": {
+      "node": "v24.19.0",
+      "npm": "11.12.1",
+      "python": "Python 3.13.12",
+      "pip": "pip 25.3 from <repo>/.venv/lib/python3.13/site-packages/pip (python 3.13)",
+      "git": "git version 2.54.0"
+    }
+  },
+  "git": {
+    "available": true,
+    "commit": "36baa15ff831b939a22bc527cd76ce653ef6f66d",
+    "branch": "main",
+    "initiallyDirty": false,
+    "isolationMode": "tracked",
+    "isolatedAttempts": false,
+    "changedPaths": [],
+    "changedDuringVerification": false,
+    "attemptsChangedState": 0
+  },
+  "issue": null,
+  "issueAssessment": null,
+  "privacy": {
+    "persistedEnvironmentValues": false,
+    "uploadPerformed": false,
+    "redactionCount": 3,
+    "redactions": [
+      {
+        "pattern": "repository path",
+        "count": 3
+      }
+    ]
+  },
+  "limitations": [
+    "This is an observation from one machine, not proof of the root cause.",
+    "A stable failure signature does not guarantee identical behavior in another environment.",
+    "Issue readiness is a deterministic heuristic, not a repair-success prediction.",
+    "The SHA-256 integrity checksum is not a digital signature or proof of authorship.",
+    "Tracked isolation does not reset untracked or ignored files between attempts."
+  ],
+  "integrity": {
+    "algorithm": "sha256",
+    "payloadHash": "8ad22c3c7dcc8c4e701a01991fc3f2a4f8e9ec9cfa2d5a1b7c9e5163a456e321",
+    "scope": "canonical JSON excluding the integrity field"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "1.0",
+  "id": "20260827T155603Z-ef03eb",
+  "createdAt": "2026-08-27T15:56:03.768Z",
+  "tool": {
+    "name": "issueproof",
+    "version": "0.3.0"
+  },
+  "reproduction": {
+    "expectation": "pass",
+    "attemptsRequested": 2,
+    "attemptsCompleted": 2,
+    "timeoutMs": 120000,
+    "maxOutputBytes": 65536,
+    "isolation": "tracked",
+    "command": {
+      "executable": "npm",
+      "args": [
+        "test"
+      ]
+    }
+  },
+  "verdict": {
+    "name": "verified_pass",
+    "verified": true,
+    "summary": "All 2 runs passed."
+  },
+  "runs": [
+    {
+      "attempt": 1,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T15:55:45.907Z",
+      "endedAt": "2026-08-27T15:55:56.613Z",
+      "durationMs": 10706,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "c00737ca23a8fe5f50fc840d1f6305fd1b397fef5d44a5b8b7970f0c9522bd83",
+      "signature": "> p-limit@7.3.1 test\n> xo && ava && tsd\nscripts/benchmarker.js:3:1\n⚠ 3:1 Unexpected todo comment: TODO: I will move this to a proper.... no-warning-comments\n1 warning\n✔ throws on invalid concurrency argument\n✔ clearQueue\n✔ accepts additional arguments\n✔ continues after sync throw\n✔ runs all tasks asynchronously\n✔ non-promise returning function\n✔ map accepts an iterable (set)\n✔ map accepts an iterable (array iterator)\n✔ map\n✔ propagates async execution context properly\n✔ shared context with a limited provider helper\n✔ map passes index and preserves order with concurrency\n✔ map works when detached from the limit\n✔ clearQueue rejects pending promises when enabled (<duration>)\n✔ accepts options object (<duration>)\n✔ does not ignore errors (<duration>)\n✔ change concurrency to bigger value (<duration>)\n✔ change concurrency to smaller value (<duration>)\n✔ concurrency: 1 (<duration>)\n✔ concurrency: 4 (<duration>)\n✔ limitFunction() (<duration>)\n✔ activeCount and pendingCount properties (<duration>)\n─\n22 tests passed",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "\n> p-limit@7.3.1 test\n> xo && ava && tsd\n\n\n  scripts/benchmarker.js:3:1\n  ⚠  3:1  Unexpected todo comment: TODO: I will move this to a proper....  no-warning-comments\n\n  1 warning\n\n\n  ✔ throws on invalid concurrency argument\n  ✔ clearQueue\n  ✔ accepts additional arguments\n  ✔ continues after sync throw\n  ✔ runs all tasks asynchronously\n  ✔ non-promise returning function\n  ✔ map accepts an iterable (set)\n  ✔ map accepts an iterable (array iterator)\n  ✔ map\n  ✔ propagates async execution context properly\n  ✔ shared context with a limited provider helper\n  ✔ map passes index and preserves order with concurrency\n  ✔ map works when detached from the limit\n  ✔ clearQueue rejects pending promises when enabled (103ms)\n  ✔ accepts options object (105ms)\n  ✔ does not ignore errors (113ms)\n  ✔ change concurrency to bigger value (155ms)\n  ✔ change concurrency to smaller value (206ms)\n  ✔ concurrency: 1 (606ms)\n  ✔ concurrency: 4 (2.3s)\n  ✔ limitFunction() (2.4s)\n  ✔ activeCount and pendingCount properties (3s)\n  ─\n\n  22 tests passed\n",
+        "totalBytes": 1085,
+        "omittedBytes": 0
+      }
+    },
+    {
+      "attempt": 2,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T15:55:56.662Z",
+      "endedAt": "2026-08-27T15:56:03.729Z",
+      "durationMs": 7067,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "17dd6575baaaa8671be63ad22a28323242f231f756263d81b14a9b35b4f4b973",
+      "signature": "> p-limit@7.3.1 test\n> xo && ava && tsd\nscripts/benchmarker.js:3:1\n⚠ 3:1 Unexpected todo comment: TODO: I will move this to a proper.... no-warning-comments\n1 warning\n✔ throws on invalid concurrency argument\n✔ clearQueue\n✔ accepts additional arguments\n✔ continues after sync throw\n✔ runs all tasks asynchronously\n✔ non-promise returning function\n✔ map accepts an iterable (set)\n✔ map accepts an iterable (array iterator)\n✔ map\n✔ propagates async execution context properly\n✔ shared context with a limited provider helper\n✔ map passes index and preserves order with concurrency\n✔ map works when detached from the limit\n✔ clearQueue rejects pending promises when enabled (<duration>)\n✔ accepts options object (<duration>)\n✔ does not ignore errors (<duration>)\n✔ change concurrency to bigger value (<duration>)\n✔ change concurrency to smaller value (<duration>)\n✔ concurrency: 1 (<duration>)\n✔ limitFunction() (<duration>)\n✔ concurrency: 4 (<duration>)\n✔ activeCount and pendingCount properties (<duration>)\n─\n22 tests passed",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "\n> p-limit@7.3.1 test\n> xo && ava && tsd\n\n\n  scripts/benchmarker.js:3:1\n  ⚠  3:1  Unexpected todo comment: TODO: I will move this to a proper....  no-warning-comments\n\n  1 warning\n\n\n  ✔ throws on invalid concurrency argument\n  ✔ clearQueue\n  ✔ accepts additional arguments\n  ✔ continues after sync throw\n  ✔ runs all tasks asynchronously\n  ✔ non-promise returning function\n  ✔ map accepts an iterable (set)\n  ✔ map accepts an iterable (array iterator)\n  ✔ map\n  ✔ propagates async execution context properly\n  ✔ shared context with a limited provider helper\n  ✔ map passes index and preserves order with concurrency\n  ✔ map works when detached from the limit\n  ✔ clearQueue rejects pending promises when enabled (105ms)\n  ✔ accepts options object (105ms)\n  ✔ does not ignore errors (116ms)\n  ✔ change concurrency to bigger value (156ms)\n  ✔ change concurrency to smaller value (207ms)\n  ✔ concurrency: 1 (609ms)\n  ✔ limitFunction() (2.3s)\n  ✔ concurrency: 4 (2.3s)\n  ✔ activeCount and pendingCount properties (3s)\n  ─\n\n  22 tests passed\n",
+        "totalBytes": 1085,
+        "omittedBytes": 0
+      }
+    }
+  ],
+  "environment": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.4.0",
+    "cpuModel": "Apple M5",
+    "ci": true,
+    "runtimes": {
+      "node": "v24.19.0",
+      "npm": "11.12.1",
+      "python": "Python 3.14.4",
+      "pip": "pip 26.0.1 from /opt/homebrew/lib/python3.14/site-packages/pip (python 3.14)",
+      "git": "git version 2.54.0"
+    }
+  },
+  "git": {
+    "available": true,
+    "commit": "df476048d023ff868cd45b35ee47f5fb0ca2b25a",
+    "branch": "main",
+    "initiallyDirty": false,
+    "isolationMode": "tracked",
+    "isolatedAttempts": false,
+    "changedPaths": [],
+    "changedDuringVerification": false,
+    "attemptsChangedState": 0
+  },
+  "issue": null,
+  "issueAssessment": null,
+  "privacy": {
+    "persistedEnvironmentValues": false,
+    "uploadPerformed": false,
+    "redactionCount": 0,
+    "redactions": []
+  },
+  "limitations": [
+    "This is an observation from one machine, not proof of the root cause.",
+    "A stable failure signature does not guarantee identical behavior in another environment.",
+    "Issue readiness is a deterministic heuristic, not a repair-success prediction.",
+    "The SHA-256 integrity checksum is not a digital signature or proof of authorship.",
+    "Tracked isolation does not reset untracked or ignored files between attempts."
+  ],
+  "integrity": {
+    "algorithm": "sha256",
+    "payloadHash": "87375ec2e508085436a9fbf6fdfee2e8d3cc39f8c13f501c1a7e082fe5322a05",
+    "scope": "canonical JSON excluding the integrity field"
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "schemaVersion": "1.0",
+  "id": "20260827T155624Z-8fa1a5",
+  "createdAt": "2026-08-27T15:56:24.604Z",
+  "tool": {
+    "name": "issueproof",
+    "version": "0.3.0"
+  },
+  "reproduction": {
+    "expectation": "pass",
+    "attemptsRequested": 2,
+    "attemptsCompleted": 2,
+    "timeoutMs": 180000,
+    "maxOutputBytes": 65536,
+    "isolation": "tracked",
+    "command": {
+      "executable": "venv/bin/python",
+      "args": [
+        "-m",
+        "pytest",
+        "tests/test_api.py"
+      ]
+    }
+  },
+  "verdict": {
+    "name": "verified_pass",
+    "verified": true,
+    "summary": "All 2 runs passed."
+  },
+  "runs": [
+    {
+      "attempt": 1,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T15:56:20.909Z",
+      "endedAt": "2026-08-27T15:56:23.772Z",
+      "durationMs": 2863,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "0407782d64c42d7c6c91f733ec6b98eb8a0a55090291227c4e5222bcf73ed15f",
+      "signature": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.12, pytest-8.4.1, pluggy-1.6.0\nrootdir: <repo>\nconfigfile: pyproject.toml\nplugins: anyio-4.14.2\ncollected 12 items\ntests/test_api.py ............ [100%]\n============================== 12 passed in <duration> ==============================",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.12, pytest-8.4.1, pluggy-1.6.0\nrootdir: <repo>\nconfigfile: pyproject.toml\nplugins: anyio-4.14.2\ncollected 12 items\n\ntests/test_api.py ............                                           [100%]\n\n============================== 12 passed in 0.33s ==============================\n",
+        "totalBytes": 432,
+        "omittedBytes": 0
+      }
+    },
+    {
+      "attempt": 2,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T15:56:23.805Z",
+      "endedAt": "2026-08-27T15:56:24.571Z",
+      "durationMs": 766,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "0407782d64c42d7c6c91f733ec6b98eb8a0a55090291227c4e5222bcf73ed15f",
+      "signature": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.12, pytest-8.4.1, pluggy-1.6.0\nrootdir: <repo>\nconfigfile: pyproject.toml\nplugins: anyio-4.14.2\ncollected 12 items\ntests/test_api.py ............ [100%]\n============================== 12 passed in <duration> ==============================",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "============================= test session starts ==============================\nplatform darwin -- Python 3.13.12, pytest-8.4.1, pluggy-1.6.0\nrootdir: <repo>\nconfigfile: pyproject.toml\nplugins: anyio-4.14.2\ncollected 12 items\n\ntests/test_api.py ............                                           [100%]\n\n============================== 12 passed in 0.32s ==============================\n",
+        "totalBytes": 432,
+        "omittedBytes": 0
+      }
+    }
+  ],
+  "environment": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.4.0",
+    "cpuModel": "Apple M5",
+    "ci": true,
+    "runtimes": {
+      "node": "v24.19.0",
+      "npm": "11.12.1",
+      "python": "Python 3.13.12",
+      "pip": "pip 26.2.1 from <repo>/venv/lib/python3.13/site-packages/pip (python 3.13)",
+      "git": "git version 2.54.0"
+    }
+  },
+  "git": {
+    "available": true,
+    "commit": "b5addb64f0161ff6bfe94c124ef76f6a1fba5254",
+    "branch": "master",
+    "initiallyDirty": false,
+    "isolationMode": "tracked",
+    "isolatedAttempts": false,
+    "changedPaths": [],
+    "changedDuringVerification": false,
+    "attemptsChangedState": 0
+  },
+  "issue": null,
+  "issueAssessment": null,
+  "privacy": {
+    "persistedEnvironmentValues": false,
+    "uploadPerformed": false,
+    "redactionCount": 3,
+    "redactions": [
+      {
+        "pattern": "repository path",
+        "count": 3
+      }
+    ]
+  },
+  "limitations": [
+    "This is an observation from one machine, not proof of the root cause.",
+    "A stable failure signature does not guarantee identical behavior in another environment.",
+    "Issue readiness is a deterministic heuristic, not a repair-success prediction.",
+    "The SHA-256 integrity checksum is not a digital signature or proof of authorship.",
+    "Tracked isolation does not reset untracked or ignored files between attempts."
+  ],
+  "integrity": {
+    "algorithm": "sha256",
+    "payloadHash": "4ace8f6db7055382a01b3c3b8f274ed379cb0af761b658e0b9cc8928b91c73f0",
+    "scope": "canonical JSON excluding the integrity field"
+  }
+}

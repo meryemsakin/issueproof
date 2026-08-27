@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "1.0",
+  "id": "20260827T155950Z-712d82",
+  "createdAt": "2026-08-27T15:59:50.990Z",
+  "tool": {
+    "name": "issueproof",
+    "version": "0.3.0"
+  },
+  "reproduction": {
+    "expectation": "pass",
+    "attemptsRequested": 2,
+    "attemptsCompleted": 2,
+    "timeoutMs": 240000,
+    "maxOutputBytes": 65536,
+    "isolation": "tracked",
+    "command": {
+      "executable": "go",
+      "args": [
+        "test",
+        "./..."
+      ]
+    }
+  },
+  "verdict": {
+    "name": "verified_pass",
+    "verified": true,
+    "summary": "All 2 runs passed."
+  },
+  "runs": [
+    {
+      "attempt": 1,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T15:59:12.907Z",
+      "endedAt": "2026-08-27T15:59:41.136Z",
+      "durationMs": 28229,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "a14166b033739e4638cdd90db96e5550c54c0df1d4848c71246e416cccc847c8",
+      "signature": "ok github.com/spf13/cobra <duration>\nok github.com/spf13/cobra/doc <duration>",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "ok  \tgithub.com/spf13/cobra\t6.896s\nok  \tgithub.com/spf13/cobra/doc\t1.074s\n",
+        "totalBytes": 74,
+        "omittedBytes": 0
+      }
+    },
+    {
+      "attempt": 2,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T15:59:41.178Z",
+      "endedAt": "2026-08-27T15:59:50.940Z",
+      "durationMs": 9762,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "4e4fc22720ab3b45f8755ab4b5d5c528d3bef2d1c033fbe8a0d20647ebb80b8c",
+      "signature": "ok github.com/spf13/cobra <duration>\nok github.com/spf13/cobra/doc (cached)",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "ok  \tgithub.com/spf13/cobra\t9.396s\nok  \tgithub.com/spf13/cobra/doc\t(cached)\n",
+        "totalBytes": 76,
+        "omittedBytes": 0
+      }
+    }
+  ],
+  "environment": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.4.0",
+    "cpuModel": "Apple M5",
+    "ci": true,
+    "runtimes": {
+      "node": "v24.19.0",
+      "npm": "11.12.1",
+      "python": "Python 3.14.4",
+      "pip": "pip 26.0.1 from /opt/homebrew/lib/python3.14/site-packages/pip (python 3.14)",
+      "go": "go version go1.27.0 darwin/arm64",
+      "git": "git version 2.54.0"
+    }
+  },
+  "git": {
+    "available": true,
+    "commit": "adbc8813901bba65827259daa8e22ff94ec1f30e",
+    "branch": "main",
+    "initiallyDirty": false,
+    "isolationMode": "tracked",
+    "isolatedAttempts": false,
+    "changedPaths": [],
+    "changedDuringVerification": false,
+    "attemptsChangedState": 0
+  },
+  "issue": null,
+  "issueAssessment": null,
+  "privacy": {
+    "persistedEnvironmentValues": false,
+    "uploadPerformed": false,
+    "redactionCount": 0,
+    "redactions": []
+  },
+  "limitations": [
+    "This is an observation from one machine, not proof of the root cause.",
+    "A stable failure signature does not guarantee identical behavior in another environment.",
+    "Issue readiness is a deterministic heuristic, not a repair-success prediction.",
+    "The SHA-256 integrity checksum is not a digital signature or proof of authorship.",
+    "Tracked isolation does not reset untracked or ignored files between attempts."
+  ],
+  "integrity": {
+    "algorithm": "sha256",
+    "payloadHash": "04ba8eb8879b55937cd477f3d884788a5fb5a94ed4323e13f50b29ec49408e82",
+    "scope": "canonical JSON excluding the integrity field"
+  }
+}
