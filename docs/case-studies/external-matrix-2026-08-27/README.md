@@ -1,6 +1,6 @@
 # Ten external repositories: compatibility matrix and a Go 1.27 signal
 
-Status: **reviewed local evidence; the GJSON finding has not yet been posted upstream**
+Status: **reviewed evidence; the GJSON finding is reported upstream in [tidwall/gjson#397](https://github.com/tidwall/gjson/issues/397)**
 
 This matrix applies the published `issueproof@0.3.0` package to selected test commands in ten public repositories. It is a compatibility exercise, not a benchmark or a claim that IssueProof validated every test in each project.
 
@@ -40,7 +40,7 @@ The initial Go 1.27 full-package run failed twice in `TestJSONString`, where GJS
 | Go 1.26.2 | `go test -v .` | `verified_pass`, 2/2 | [`e126af3…`](receipts/gjson-go126-full.json) |
 | Go 1.27.0 with `GOEXPERIMENT=nojsonv2` | narrowed command above | `verified_pass`, 2/2 | [`fe5bc59…`](receipts/gjson-go127-nojsonv2.json) |
 
-The evidence isolates the observed change to the Go 1.27 JSON implementation boundary. Go 1.27 makes the existing `encoding/json` API use the new v2 backend and documents `GOEXPERIMENT=nojsonv2` as a temporary compatibility control. This does not yet establish whether the appropriate upstream change belongs in GJSON, the test expectation, or Go itself. No upstream issue or PR should be opened until that ownership question is reviewed.
+The evidence isolates the observed change to the Go 1.27 JSON implementation boundary. Go 1.27 makes the existing `encoding/json` API use the new v2 backend and documents `GOEXPERIMENT=nojsonv2` as a temporary compatibility control. This does not yet establish whether the appropriate upstream change belongs in GJSON, the test expectation, or Go itself. The observation and its controls were reported in [tidwall/gjson#397](https://github.com/tidwall/gjson/issues/397) for maintainer review.
 
 ## Limits
 
