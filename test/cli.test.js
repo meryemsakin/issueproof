@@ -35,7 +35,7 @@ test("init -> config verify --json works end to end", async () => {
     assert.equal(summary.verified, true);
     assert.equal(summary.config, config);
     const receipt = JSON.parse(await readFile(summary.jsonPath, "utf8"));
-    assert.equal(receipt.tool.version, "0.2.1");
+    assert.equal(receipt.tool.version, "0.3.0");
     const markdown = await readFile(summary.markdownPath, "utf8");
     assert.match(markdown, /not a digital signature or proof of authorship/i);
   } finally {

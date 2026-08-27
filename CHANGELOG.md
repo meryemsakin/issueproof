@@ -4,6 +4,8 @@ All notable changes are documented here. The project follows semantic versioning
 
 ## Unreleased
 
+## 0.3.0 — 2026-08-27
+
 - Add optional per-attempt Git worktree isolation from committed `HEAD`.
 - Terminate timed-out POSIX process groups and Windows process trees, including descendant workers.
 - Add an adversarial failure-fingerprint regression corpus with explicit merge/separation decisions.

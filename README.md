@@ -47,7 +47,7 @@ The first is measured by execution. The second is a transparent heuristic. Issue
 
 ## Current scope
 
-Version 0.2 targets reproducible CLI, test, and build failures. It deliberately does not claim to reproduce GUI flows, production-only incidents, distributed races, or root causes.
+Version 0.3 targets reproducible CLI, test, and build failures. It deliberately does not claim to reproduce GUI flows, production-only incidents, distributed races, or root causes.
 
 Verdicts include:
 
@@ -140,7 +140,7 @@ steps:
     with:
       node-version: 24
   - id: issueproof
-    uses: meryemsakin/issueproof@v0.2.1
+    uses: meryemsakin/issueproof@v0.3.0
     with:
       config: .issueproof.json
 ```
@@ -182,7 +182,7 @@ Usage questions and suspected bugs follow [SUPPORT.md](SUPPORT.md). Security-sen
 
 ## Status
 
-This is an evidence-backed v0.2 public alpha. The CLI is published as [`issueproof` on npm](https://www.npmjs.com/package/issueproof), and the repository can be consumed as a composite GitHub Action.
+This is an evidence-backed v0.3 public alpha. The CLI is published as [`issueproof` on npm](https://www.npmjs.com/package/issueproof), and the repository can be consumed as a composite GitHub Action.
 
 ## License
 
