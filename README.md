@@ -3,6 +3,7 @@
 **Prove that a bug reproduction is stable before handing it to a human or coding agent.**
 
 [![npm](https://img.shields.io/npm/v/issueproof)](https://www.npmjs.com/package/issueproof)
+[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-IssueProof-blue?logo=github)](https://github.com/marketplace/actions/issueproof)
 [![CI](https://github.com/meryemsakin/issueproof/actions/workflows/ci.yml/badge.svg)](https://github.com/meryemsakin/issueproof/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -200,7 +201,7 @@ Usage questions and suspected bugs follow [SUPPORT.md](SUPPORT.md). Security-sen
 
 ## Status
 
-This is an evidence-backed v0.3 public alpha. The CLI is published as [`issueproof` on npm](https://www.npmjs.com/package/issueproof), and the repository can be consumed as a composite GitHub Action.
+This is an evidence-backed v0.3 public alpha. The CLI is published as [`issueproof` on npm](https://www.npmjs.com/package/issueproof), and the composite Action is available in the [GitHub Marketplace](https://github.com/marketplace/actions/issueproof).
 
 ## License
 
