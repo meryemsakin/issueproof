@@ -1,0 +1,236 @@
+{
+  "schemaVersion": "1.0",
+  "id": "20260827T160251Z-51f71c",
+  "createdAt": "2026-08-27T16:02:51.820Z",
+  "tool": {
+    "name": "issueproof",
+    "version": "0.3.0"
+  },
+  "reproduction": {
+    "expectation": "fail",
+    "attemptsRequested": 5,
+    "attemptsCompleted": 5,
+    "timeoutMs": 60000,
+    "maxOutputBytes": 65536,
+    "isolation": "tracked",
+    "command": {
+      "executable": "go",
+      "args": [
+        "test",
+        "-run",
+        "^TestJSONString$",
+        "-count=1",
+        "-v",
+        "."
+      ]
+    }
+  },
+  "verdict": {
+    "name": "stable_failure",
+    "verified": true,
+    "summary": "The same failure occurred in all 5 runs."
+  },
+  "runs": [
+    {
+      "attempt": 1,
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T16:02:49.248Z",
+      "endedAt": "2026-08-27T16:02:49.746Z",
+      "durationMs": 498,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "9062dbf4bd666cba0a82adea5378ad94ff722fac61910b38710d9db39be6e609",
+      "signature": "=== RUN TestJSONString\ngjson_test.go:2568: \"R\\xfd\\xfc\\a!\\x82eO\\x16?_\\x0f\\x9ab\\x1dr\"\n\"R\\ufffd\\ufffd\\u0007!\\ufffdeO\\u0016?_\\u000f\\ufffdb\\u001dr\"\n\"R��\\u0007!�eO\\u0016?_\\u000f�b\\u001dr\"\n<<< MISMATCH >>>\n--- FAIL: TestJSONString (<duration>)\nFAIL\nFAIL github.com/tidwall/gjson <duration>\nFAIL",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "=== RUN   TestJSONString\n    gjson_test.go:2568: \"R\\xfd\\xfc\\a!\\x82eO\\x16?_\\x0f\\x9ab\\x1dr\"\n        \t\"R\\ufffd\\ufffd\\u0007!\\ufffdeO\\u0016?_\\u000f\\ufffdb\\u001dr\"\n        \t\"R��\\u0007!�eO\\u0016?_\\u000f�b\\u001dr\"\n        \t<<< MISMATCH >>>\n--- FAIL: TestJSONString (0.00s)\nFAIL\nFAIL\tgithub.com/tidwall/gjson\t0.282s\nFAIL\n",
+        "totalBytes": 320,
+        "omittedBytes": 0
+      }
+    },
+    {
+      "attempt": 2,
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T16:02:49.782Z",
+      "endedAt": "2026-08-27T16:02:50.253Z",
+      "durationMs": 471,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "9062dbf4bd666cba0a82adea5378ad94ff722fac61910b38710d9db39be6e609",
+      "signature": "=== RUN TestJSONString\ngjson_test.go:2568: \"R\\xfd\\xfc\\a!\\x82eO\\x16?_\\x0f\\x9ab\\x1dr\"\n\"R\\ufffd\\ufffd\\u0007!\\ufffdeO\\u0016?_\\u000f\\ufffdb\\u001dr\"\n\"R��\\u0007!�eO\\u0016?_\\u000f�b\\u001dr\"\n<<< MISMATCH >>>\n--- FAIL: TestJSONString (<duration>)\nFAIL\nFAIL github.com/tidwall/gjson <duration>\nFAIL",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "=== RUN   TestJSONString\n    gjson_test.go:2568: \"R\\xfd\\xfc\\a!\\x82eO\\x16?_\\x0f\\x9ab\\x1dr\"\n        \t\"R\\ufffd\\ufffd\\u0007!\\ufffdeO\\u0016?_\\u000f\\ufffdb\\u001dr\"\n        \t\"R��\\u0007!�eO\\u0016?_\\u000f�b\\u001dr\"\n        \t<<< MISMATCH >>>\n--- FAIL: TestJSONString (0.00s)\nFAIL\nFAIL\tgithub.com/tidwall/gjson\t0.269s\nFAIL\n",
+        "totalBytes": 320,
+        "omittedBytes": 0
+      }
+    },
+    {
+      "attempt": 3,
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T16:02:50.286Z",
+      "endedAt": "2026-08-27T16:02:50.765Z",
+      "durationMs": 479,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "9062dbf4bd666cba0a82adea5378ad94ff722fac61910b38710d9db39be6e609",
+      "signature": "=== RUN TestJSONString\ngjson_test.go:2568: \"R\\xfd\\xfc\\a!\\x82eO\\x16?_\\x0f\\x9ab\\x1dr\"\n\"R\\ufffd\\ufffd\\u0007!\\ufffdeO\\u0016?_\\u000f\\ufffdb\\u001dr\"\n\"R��\\u0007!�eO\\u0016?_\\u000f�b\\u001dr\"\n<<< MISMATCH >>>\n--- FAIL: TestJSONString (<duration>)\nFAIL\nFAIL github.com/tidwall/gjson <duration>\nFAIL",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "=== RUN   TestJSONString\n    gjson_test.go:2568: \"R\\xfd\\xfc\\a!\\x82eO\\x16?_\\x0f\\x9ab\\x1dr\"\n        \t\"R\\ufffd\\ufffd\\u0007!\\ufffdeO\\u0016?_\\u000f\\ufffdb\\u001dr\"\n        \t\"R��\\u0007!�eO\\u0016?_\\u000f�b\\u001dr\"\n        \t<<< MISMATCH >>>\n--- FAIL: TestJSONString (0.00s)\nFAIL\nFAIL\tgithub.com/tidwall/gjson\t0.277s\nFAIL\n",
+        "totalBytes": 320,
+        "omittedBytes": 0
+      }
+    },
+    {
+      "attempt": 4,
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T16:02:50.798Z",
+      "endedAt": "2026-08-27T16:02:51.276Z",
+      "durationMs": 478,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "9062dbf4bd666cba0a82adea5378ad94ff722fac61910b38710d9db39be6e609",
+      "signature": "=== RUN TestJSONString\ngjson_test.go:2568: \"R\\xfd\\xfc\\a!\\x82eO\\x16?_\\x0f\\x9ab\\x1dr\"\n\"R\\ufffd\\ufffd\\u0007!\\ufffdeO\\u0016?_\\u000f\\ufffdb\\u001dr\"\n\"R��\\u0007!�eO\\u0016?_\\u000f�b\\u001dr\"\n<<< MISMATCH >>>\n--- FAIL: TestJSONString (<duration>)\nFAIL\nFAIL github.com/tidwall/gjson <duration>\nFAIL",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "=== RUN   TestJSONString\n    gjson_test.go:2568: \"R\\xfd\\xfc\\a!\\x82eO\\x16?_\\x0f\\x9ab\\x1dr\"\n        \t\"R\\ufffd\\ufffd\\u0007!\\ufffdeO\\u0016?_\\u000f\\ufffdb\\u001dr\"\n        \t\"R��\\u0007!�eO\\u0016?_\\u000f�b\\u001dr\"\n        \t<<< MISMATCH >>>\n--- FAIL: TestJSONString (0.00s)\nFAIL\nFAIL\tgithub.com/tidwall/gjson\t0.276s\nFAIL\n",
+        "totalBytes": 320,
+        "omittedBytes": 0
+      }
+    },
+    {
+      "attempt": 5,
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T16:02:51.310Z",
+      "endedAt": "2026-08-27T16:02:51.788Z",
+      "durationMs": 478,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "9062dbf4bd666cba0a82adea5378ad94ff722fac61910b38710d9db39be6e609",
+      "signature": "=== RUN TestJSONString\ngjson_test.go:2568: \"R\\xfd\\xfc\\a!\\x82eO\\x16?_\\x0f\\x9ab\\x1dr\"\n\"R\\ufffd\\ufffd\\u0007!\\ufffdeO\\u0016?_\\u000f\\ufffdb\\u001dr\"\n\"R��\\u0007!�eO\\u0016?_\\u000f�b\\u001dr\"\n<<< MISMATCH >>>\n--- FAIL: TestJSONString (<duration>)\nFAIL\nFAIL github.com/tidwall/gjson <duration>\nFAIL",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "=== RUN   TestJSONString\n    gjson_test.go:2568: \"R\\xfd\\xfc\\a!\\x82eO\\x16?_\\x0f\\x9ab\\x1dr\"\n        \t\"R\\ufffd\\ufffd\\u0007!\\ufffdeO\\u0016?_\\u000f\\ufffdb\\u001dr\"\n        \t\"R��\\u0007!�eO\\u0016?_\\u000f�b\\u001dr\"\n        \t<<< MISMATCH >>>\n--- FAIL: TestJSONString (0.00s)\nFAIL\nFAIL\tgithub.com/tidwall/gjson\t0.277s\nFAIL\n",
+        "totalBytes": 320,
+        "omittedBytes": 0
+      }
+    }
+  ],
+  "environment": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.4.0",
+    "cpuModel": "Apple M5",
+    "ci": true,
+    "runtimes": {
+      "node": "v24.19.0",
+      "npm": "11.12.1",
+      "python": "Python 3.14.4",
+      "pip": "pip 26.0.1 from /opt/homebrew/lib/python3.14/site-packages/pip (python 3.14)",
+      "go": "go version go1.27.0 darwin/arm64",
+      "git": "git version 2.54.0"
+    }
+  },
+  "git": {
+    "available": true,
+    "commit": "7d8b3821e9d2acf35e8a226b63fcf801078e9b96",
+    "branch": "master",
+    "initiallyDirty": false,
+    "isolationMode": "tracked",
+    "isolatedAttempts": false,
+    "changedPaths": [],
+    "changedDuringVerification": false,
+    "attemptsChangedState": 0
+  },
+  "issue": null,
+  "issueAssessment": null,
+  "privacy": {
+    "persistedEnvironmentValues": false,
+    "uploadPerformed": false,
+    "redactionCount": 0,
+    "redactions": []
+  },
+  "limitations": [
+    "This is an observation from one machine, not proof of the root cause.",
+    "A stable failure signature does not guarantee identical behavior in another environment.",
+    "Issue readiness is a deterministic heuristic, not a repair-success prediction.",
+    "The SHA-256 integrity checksum is not a digital signature or proof of authorship.",
+    "Tracked isolation does not reset untracked or ignored files between attempts."
+  ],
+  "integrity": {
+    "algorithm": "sha256",
+    "payloadHash": "939cf13f4acdf5277e8fd55cd4fe7ae381b70c779d8aa4ad9eb280409ad444f8",
+    "scope": "canonical JSON excluding the integrity field"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "1.0",
+  "id": "20260827T155601Z-186436",
+  "createdAt": "2026-08-27T15:56:01.714Z",
+  "tool": {
+    "name": "issueproof",
+    "version": "0.3.0"
+  },
+  "reproduction": {
+    "expectation": "pass",
+    "attemptsRequested": 2,
+    "attemptsCompleted": 2,
+    "timeoutMs": 180000,
+    "maxOutputBytes": 65536,
+    "isolation": "tracked",
+    "command": {
+      "executable": "npm",
+      "args": [
+        "test"
+      ]
+    }
+  },
+  "verdict": {
+    "name": "verified_pass",
+    "verified": true,
+    "summary": "All 2 runs passed."
+  },
+  "runs": [
+    {
+      "attempt": 1,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T15:55:45.907Z",
+      "endedAt": "2026-08-27T15:55:55.486Z",
+      "durationMs": 9579,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "22ee23b027a2bb33ef590880290da3db46a18a2609a524d442c40825cfb78902",
+      "signature": "✔ force-color › `FORCE_COLOR=true` only enables color and lets the level be detected (<duration>)\n✔ force-color › a non-numeric `FORCE_COLOR` is treated as unset, not as disabled (<duration>)\n✔ level › don't output colors when manually disabled\n✔ level › enable/disable colors based on overall chalk .level property, not individual instances\n✔ level › propagate enable/disable changes from child colors\n✔ force-color › a partly numeric `FORCE_COLOR` is treated as unset, not as a level (<duration>)\n✔ level › disable colors if they are not supported\n✔ no-color-support › colors can be forced by using chalk.level\n✔ visible › visible: normal output when level > 0\n✔ visible › visible: no output when level is too low\n✔ visible › test switching back and forth between level == 0 and level > 0\n─\n58 tests passed\n--------------------------|---------|----------|---------|---------|-------------------\nFile | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s\n--------------------------|---------|----------|---------|---------|-------------------\nAll files | 100 | 99.33 | 96.87 | 100 |\nsource | 100 | 100 | 96.29 | 100 |\nindex.js | 100 | 100 | 96 | 100 |\nutilities.js | 100 | 100 | 100 | 100 |\ntest | 100 | 98.68 | 100 | 100 |\n_fixture.js | 100 | 100 | 100 | 100 |\n_force-color-fixture.js | 100 | 100 | 100 | 100 |\nchalk.js | 100 | 96.87 | 100 | 100 | 15\nforce-color.js | 100 | 100 | 100 | 100 |\ninstance.js | 100 | 100 | 100 | 100 |\nlevel.js | 100 | 100 | 100 | 100 |\nno-color-support.js | 100 | 100 | 100 | 100 |\nvisible.js | 100 | 100 | 100 | 100 |\n--------------------------|---------|----------|---------|---------|-------------------",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "\n> chalk@6.0.0 test\n> xo && c8 ava && tsc --noEmit --types node source/index.d.ts\n\n\n\nTERM: [none]\n  ✔ chalk › don't add any styling when called as the base function\n  ✔ chalk › support multiple arguments in base function\n  ✔ chalk › support automatic casting to string\n  ✔ chalk › style string\n  ✔ chalk › support applying multiple styles at once\n  ✔ chalk › support nesting styles\n  ✔ chalk › support nesting styles of the same type (color, underline, bg)\n  ✔ chalk › reset all styles with `.reset()`\n  ✔ chalk › support caching multiple styles\n  ✔ chalk › alias gray to grey\n  ✔ chalk › support variable number of arguments\n  ✔ chalk › support falsy values\n  ✔ chalk › don't output escape codes if the input is empty\n  ✔ chalk › keep Function.prototype methods\n  ✔ chalk › line breaks should open and close colors\n  ✔ chalk › line breaks should open and close colors with CRLF\n  ✔ chalk › properly convert RGB to 16 colors on basic color terminals\n  ✔ chalk › properly convert RGB to 256 colors on basic color terminals\n  ✔ chalk › properly convert ANSI 256 to 16 colors on basic color terminals\n  ✔ chalk › keep ANSI 256 colors on 256 color and Truecolor terminals\n  ✔ chalk › don't emit color codes if level is 0\n  ✔ chalk › support extended underline styles\n  ✔ chalk › support nesting underline styles\n  ✔ chalk › support underline colors\n  ✔ chalk › support nesting underline colors\n  ✔ chalk › properly downsample underline colors\n  ✔ chalk › expose the underline style names\n  ✔ chalk › supports blackBright color\n  ✔ chalk › sets correct level for chalkStderr and respects it\n  ✔ chalk › keeps function prototype methods\nplatform: darwin\n  ✔ force-color › `FORCE_COLOR=1` is an exact level, not a minimum (156ms)\n  ✔ force-color › a `FORCE_COLOR` above 3 is clamped to 3 (149ms)\n  ✔ force-color › `FORCE_COLOR=1` overrides TERM detection (150ms)\n  ✔ force-color › `FORCE_COLOR=false` disables color (143ms)\n  ✔ force-color › `FORCE_COLOR=1` overrides CI detection (153ms)\n  ✔ force-color › `FORCE_COLOR=3` enables truecolor (154ms)\n  ✔ force-color › an empty `FORCE_COLOR` behaves like `FORCE_COLOR=true` (145ms)\n  ✔ force-color › `FORCE_COLOR=2` is an exact level, not a minimum (161ms)\n  ✔ force-color › `FORCE_COLOR=0` disables color (159ms)\n  ✔ instance › create an isolated context where colors can be disabled (by level)\n  ✔ instance › the `level` option should be a number from 0 to 3\n  ✔ instance › an omitted `level` option is detected rather than rejected\n  ✔ instance › assigning `level` is validated\n  ✔ instance › a cached model style keeps following the level\n  ✔ instance › a model style cached on a style in the chain keeps following the level\n  ✔ instance › a deep chain reads the level from the instance it started on\n  ✔ force-color › the `--color=256` and `--color=16m` flags take precedence over a numeric `FORCE_COLOR` (224ms)\n  ✔ force-color › `FORCE_COLOR=true` only enables color and lets the level be detected (308ms)\n  ✔ force-color › a non-numeric `FORCE_COLOR` is treated as unset, not as disabled (332ms)\n  ✔ level › don't output colors when manually disabled\n  ✔ level › enable/disable colors based on overall chalk .level property, not individual instances\n  ✔ level › propagate enable/disable changes from child colors\n  ✔ force-color › a partly numeric `FORCE_COLOR` is treated as unset, not as a level (536ms)\n  ✔ level › disable colors if they are not supported\n  ✔ no-color-support › colors can be forced by using chalk.level\n  ✔ visible › visible: normal output when level > 0\n  ✔ visible › visible: no output when level is too low\n  ✔ visible › test switching back and forth between level == 0 and level > 0\n  ─\n\n  58 tests passed\n--------------------------|---------|----------|---------|---------|-------------------\nFile                      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s \n--------------------------|---------|----------|---------|---------|-------------------\nAll files                 |     100 |    99.33 |   96.87 |     100 |                   \n source                   |     100 |      100 |   96.29 |     100 |                   \n  index.js                |     100 |      100 |      96 |     100 |                   \n  utilities.js            |     100 |      100 |     100 |     100 |                   \n test                     |     100 |    98.68 |     100 |     100 |                   \n  _fixture.js             |     100 |      100 |     100 |     100 |                   \n  _force-color-fixture.js |     100 |      100 |     100 |     100 |                   \n  chalk.js                |     100 |    96.87 |     100 |     100 | 15                \n  force-color.js          |     100 |      100 |     100 |     100 |                   \n  instance.js             |     100 |      100 |     100 |     100 |                   \n  level.js                |     100 |      100 |     100 |     100 |                   \n  no-color-support.js     |     100 |      100 |     100 |     100 |                   \n  visible.js              |     100 |      100 |     100 |     100 |                   \n--------------------------|---------|----------|---------|---------|-------------------\n",
+        "totalBytes": 5410,
+        "omittedBytes": 0
+      }
+    },
+    {
+      "attempt": 2,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T15:55:55.542Z",
+      "endedAt": "2026-08-27T15:56:01.629Z",
+      "durationMs": 6087,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "22ee23b027a2bb33ef590880290da3db46a18a2609a524d442c40825cfb78902",
+      "signature": "✔ force-color › `FORCE_COLOR=true` only enables color and lets the level be detected (<duration>)\n✔ force-color › a non-numeric `FORCE_COLOR` is treated as unset, not as disabled (<duration>)\n✔ level › don't output colors when manually disabled\n✔ level › enable/disable colors based on overall chalk .level property, not individual instances\n✔ level › propagate enable/disable changes from child colors\n✔ force-color › a partly numeric `FORCE_COLOR` is treated as unset, not as a level (<duration>)\n✔ level › disable colors if they are not supported\n✔ no-color-support › colors can be forced by using chalk.level\n✔ visible › visible: normal output when level > 0\n✔ visible › visible: no output when level is too low\n✔ visible › test switching back and forth between level == 0 and level > 0\n─\n58 tests passed\n--------------------------|---------|----------|---------|---------|-------------------\nFile | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s\n--------------------------|---------|----------|---------|---------|-------------------\nAll files | 100 | 99.33 | 96.87 | 100 |\nsource | 100 | 100 | 96.29 | 100 |\nindex.js | 100 | 100 | 96 | 100 |\nutilities.js | 100 | 100 | 100 | 100 |\ntest | 100 | 98.68 | 100 | 100 |\n_fixture.js | 100 | 100 | 100 | 100 |\n_force-color-fixture.js | 100 | 100 | 100 | 100 |\nchalk.js | 100 | 96.87 | 100 | 100 | 15\nforce-color.js | 100 | 100 | 100 | 100 |\ninstance.js | 100 | 100 | 100 | 100 |\nlevel.js | 100 | 100 | 100 | 100 |\nno-color-support.js | 100 | 100 | 100 | 100 |\nvisible.js | 100 | 100 | 100 | 100 |\n--------------------------|---------|----------|---------|---------|-------------------",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "\n> chalk@6.0.0 test\n> xo && c8 ava && tsc --noEmit --types node source/index.d.ts\n\n\n\nTERM: [none]\n  ✔ chalk › don't add any styling when called as the base function\n  ✔ chalk › support multiple arguments in base function\n  ✔ chalk › support automatic casting to string\n  ✔ chalk › style string\n  ✔ chalk › support applying multiple styles at once\n  ✔ chalk › support nesting styles\n  ✔ chalk › support nesting styles of the same type (color, underline, bg)\n  ✔ chalk › reset all styles with `.reset()`\n  ✔ chalk › support caching multiple styles\n  ✔ chalk › alias gray to grey\n  ✔ chalk › support variable number of arguments\n  ✔ chalk › support falsy values\n  ✔ chalk › don't output escape codes if the input is empty\n  ✔ chalk › keep Function.prototype methods\n  ✔ chalk › line breaks should open and close colors\n  ✔ chalk › line breaks should open and close colors with CRLF\n  ✔ chalk › properly convert RGB to 16 colors on basic color terminals\n  ✔ chalk › properly convert RGB to 256 colors on basic color terminals\n  ✔ chalk › properly convert ANSI 256 to 16 colors on basic color terminals\n  ✔ chalk › keep ANSI 256 colors on 256 color and Truecolor terminals\n  ✔ chalk › don't emit color codes if level is 0\n  ✔ chalk › support extended underline styles\n  ✔ chalk › support nesting underline styles\n  ✔ chalk › support underline colors\n  ✔ chalk › support nesting underline colors\n  ✔ chalk › properly downsample underline colors\n  ✔ chalk › expose the underline style names\n  ✔ chalk › supports blackBright color\n  ✔ chalk › sets correct level for chalkStderr and respects it\n  ✔ chalk › keeps function prototype methods\nplatform: darwin\n  ✔ force-color › `FORCE_COLOR=2` is an exact level, not a minimum (163ms)\n  ✔ force-color › `FORCE_COLOR=3` enables truecolor (163ms)\n  ✔ force-color › `FORCE_COLOR=0` disables color (161ms)\n  ✔ force-color › `FORCE_COLOR=1` overrides CI detection (167ms)\n  ✔ force-color › `FORCE_COLOR=1` is an exact level, not a minimum (185ms)\n  ✔ force-color › a `FORCE_COLOR` above 3 is clamped to 3 (166ms)\n  ✔ force-color › `FORCE_COLOR=1` overrides TERM detection (185ms)\n  ✔ force-color › an empty `FORCE_COLOR` behaves like `FORCE_COLOR=true` (182ms)\n  ✔ force-color › `FORCE_COLOR=false` disables color (190ms)\n  ✔ force-color › the `--color=256` and `--color=16m` flags take precedence over a numeric `FORCE_COLOR` (277ms)\n  ✔ instance › create an isolated context where colors can be disabled (by level)\n  ✔ instance › the `level` option should be a number from 0 to 3\n  ✔ instance › an omitted `level` option is detected rather than rejected\n  ✔ instance › assigning `level` is validated\n  ✔ instance › a cached model style keeps following the level\n  ✔ instance › a model style cached on a style in the chain keeps following the level\n  ✔ instance › a deep chain reads the level from the instance it started on\n  ✔ force-color › `FORCE_COLOR=true` only enables color and lets the level be detected (393ms)\n  ✔ force-color › a non-numeric `FORCE_COLOR` is treated as unset, not as disabled (385ms)\n  ✔ level › don't output colors when manually disabled\n  ✔ level › enable/disable colors based on overall chalk .level property, not individual instances\n  ✔ level › propagate enable/disable changes from child colors\n  ✔ force-color › a partly numeric `FORCE_COLOR` is treated as unset, not as a level (609ms)\n  ✔ level › disable colors if they are not supported\n  ✔ no-color-support › colors can be forced by using chalk.level\n  ✔ visible › visible: normal output when level > 0\n  ✔ visible › visible: no output when level is too low\n  ✔ visible › test switching back and forth between level == 0 and level > 0\n  ─\n\n  58 tests passed\n--------------------------|---------|----------|---------|---------|-------------------\nFile                      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s \n--------------------------|---------|----------|---------|---------|-------------------\nAll files                 |     100 |    99.33 |   96.87 |     100 |                   \n source                   |     100 |      100 |   96.29 |     100 |                   \n  index.js                |     100 |      100 |      96 |     100 |                   \n  utilities.js            |     100 |      100 |     100 |     100 |                   \n test                     |     100 |    98.68 |     100 |     100 |                   \n  _fixture.js             |     100 |      100 |     100 |     100 |                   \n  _force-color-fixture.js |     100 |      100 |     100 |     100 |                   \n  chalk.js                |     100 |    96.87 |     100 |     100 | 15                \n  force-color.js          |     100 |      100 |     100 |     100 |                   \n  instance.js             |     100 |      100 |     100 |     100 |                   \n  level.js                |     100 |      100 |     100 |     100 |                   \n  no-color-support.js     |     100 |      100 |     100 |     100 |                   \n  visible.js              |     100 |      100 |     100 |     100 |                   \n--------------------------|---------|----------|---------|---------|-------------------\n",
+        "totalBytes": 5410,
+        "omittedBytes": 0
+      }
+    }
+  ],
+  "environment": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.4.0",
+    "cpuModel": "Apple M5",
+    "ci": true,
+    "runtimes": {
+      "node": "v24.19.0",
+      "npm": "11.12.1",
+      "python": "Python 3.14.4",
+      "pip": "pip 26.0.1 from /opt/homebrew/lib/python3.14/site-packages/pip (python 3.14)",
+      "git": "git version 2.54.0"
+    }
+  },
+  "git": {
+    "available": true,
+    "commit": "661317e6f91fe7c90306c2c48ea9354562ee9146",
+    "branch": "main",
+    "initiallyDirty": false,
+    "isolationMode": "tracked",
+    "isolatedAttempts": false,
+    "changedPaths": [],
+    "changedDuringVerification": false,
+    "attemptsChangedState": 0
+  },
+  "issue": null,
+  "issueAssessment": null,
+  "privacy": {
+    "persistedEnvironmentValues": false,
+    "uploadPerformed": false,
+    "redactionCount": 0,
+    "redactions": []
+  },
+  "limitations": [
+    "This is an observation from one machine, not proof of the root cause.",
+    "A stable failure signature does not guarantee identical behavior in another environment.",
+    "Issue readiness is a deterministic heuristic, not a repair-success prediction.",
+    "The SHA-256 integrity checksum is not a digital signature or proof of authorship.",
+    "Tracked isolation does not reset untracked or ignored files between attempts."
+  ],
+  "integrity": {
+    "algorithm": "sha256",
+    "payloadHash": "a63e05db875c1f4bcb42bffc3cd6746e87eb49162245283dac882a45a9f0d604",
+    "scope": "canonical JSON excluding the integrity field"
+  }
+}

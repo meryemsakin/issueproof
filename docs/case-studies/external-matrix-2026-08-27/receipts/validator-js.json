@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "1.0",
+  "id": "20260827T155608Z-b281bd",
+  "createdAt": "2026-08-27T15:56:08.891Z",
+  "tool": {
+    "name": "issueproof",
+    "version": "0.3.0"
+  },
+  "reproduction": {
+    "expectation": "pass",
+    "attemptsRequested": 2,
+    "attemptsCompleted": 2,
+    "timeoutMs": 180000,
+    "maxOutputBytes": 65536,
+    "isolation": "tracked",
+    "command": {
+      "executable": "npm",
+      "args": [
+        "test"
+      ]
+    }
+  },
+  "verdict": {
+    "name": "verified_pass",
+    "verified": true,
+    "summary": "All 2 runs passed."
+  },
+  "runs": [
+    {
+      "attempt": 1,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T15:55:45.907Z",
+      "endedAt": "2026-08-27T15:56:00.411Z",
+      "durationMs": 14504,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "5480628863064e6e753a1b6ee63412b4dd6a83ee4cf3e5ab5a42b50841bf7324",
+      "signature": "> npm run build && npm run lint\n> validator@13.15.35 build\n> run-p build:*\n> validator@13.15.35 build:node\n> babel src -d .\n> validator@13.15.35 build:browser\n> node --require @babel/register build-browser && npm run minify\n> validator@13.15.35 build:es\n> babel src -d es --env-name=es\nSuccessfully compiled 114 files with Babel (<duration>).\nSuccessfully compiled 114 files with Babel (<duration>).\n> validator@13.15.35 minify\n> uglifyjs validator.js -o validator.min.js --compress --mangle --comments /Copyright/\n> validator@13.15.35 lint\n> eslint src test\n> validator@13.15.35 test\n> nyc --reporter=cobertura --reporter=text-summary mocha --require @babel/register --reporter dot --recursive\n․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n323 passing (<duration>)\n=============================== Coverage summary ===============================\nStatements : 100% ( 2744/2744 )\nBranches : 96.59% ( 1697/1757 )\nFunctions : 100% ( 427/427 )\nLines : 100% ( 2429/2429 )\n================================================================================",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "\n> validator@13.15.35 pretest\n> npm run build && npm run lint\n\n\n> validator@13.15.35 build\n> run-p build:*\n\n\n> validator@13.15.35 build:node\n> babel src -d .\n\n\n> validator@13.15.35 build:browser\n> node --require @babel/register build-browser && npm run minify\n\n\n> validator@13.15.35 build:es\n> babel src -d es --env-name=es\n\nSuccessfully compiled 114 files with Babel (998ms).\nSuccessfully compiled 114 files with Babel (1400ms).\n\n> validator@13.15.35 minify\n> uglifyjs validator.js -o validator.min.js  --compress --mangle --comments /Copyright/\n\n\n> validator@13.15.35 lint\n> eslint src test\n\n\n> validator@13.15.35 test\n> nyc --reporter=cobertura --reporter=text-summary mocha --require @babel/register --reporter dot --recursive\n\n\n\n  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n\n  323 passing (176ms)\n\n\n=============================== Coverage summary ===============================\nStatements   : 100% ( 2744/2744 )\nBranches     : 96.59% ( 1697/1757 )\nFunctions    : 100% ( 427/427 )\nLines        : 100% ( 2429/2429 )\n================================================================================\n",
+        "totalBytes": 2044,
+        "omittedBytes": 0
+      }
+    },
+    {
+      "attempt": 2,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T15:56:00.450Z",
+      "endedAt": "2026-08-27T15:56:08.856Z",
+      "durationMs": 8406,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "14c07822883def986aab3c91180ed5287ddf076d0fc8cb6b77914469e0530524",
+      "signature": "> npm run build && npm run lint\n> validator@13.15.35 build\n> run-p build:*\n> validator@13.15.35 build:node\n> babel src -d .\n> validator@13.15.35 build:es\n> babel src -d es --env-name=es\n> validator@13.15.35 build:browser\n> node --require @babel/register build-browser && npm run minify\nSuccessfully compiled 114 files with Babel (<duration>).\nSuccessfully compiled 114 files with Babel (<duration>).\n> validator@13.15.35 minify\n> uglifyjs validator.js -o validator.min.js --compress --mangle --comments /Copyright/\n> validator@13.15.35 lint\n> eslint src test\n> validator@13.15.35 test\n> nyc --reporter=cobertura --reporter=text-summary mocha --require @babel/register --reporter dot --recursive\n․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n323 passing (<duration>)\n=============================== Coverage summary ===============================\nStatements : 100% ( 2744/2744 )\nBranches : 96.59% ( 1697/1757 )\nFunctions : 100% ( 427/427 )\nLines : 100% ( 2429/2429 )\n================================================================================",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "\n> validator@13.15.35 pretest\n> npm run build && npm run lint\n\n\n> validator@13.15.35 build\n> run-p build:*\n\n\n> validator@13.15.35 build:node\n> babel src -d .\n\n\n> validator@13.15.35 build:es\n> babel src -d es --env-name=es\n\n\n> validator@13.15.35 build:browser\n> node --require @babel/register build-browser && npm run minify\n\nSuccessfully compiled 114 files with Babel (924ms).\nSuccessfully compiled 114 files with Babel (1102ms).\n\n> validator@13.15.35 minify\n> uglifyjs validator.js -o validator.min.js  --compress --mangle --comments /Copyright/\n\n\n> validator@13.15.35 lint\n> eslint src test\n\n\n> validator@13.15.35 test\n> nyc --reporter=cobertura --reporter=text-summary mocha --require @babel/register --reporter dot --recursive\n\n\n\n  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n  ․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․․\n\n  323 passing (157ms)\n\n\n=============================== Coverage summary ===============================\nStatements   : 100% ( 2744/2744 )\nBranches     : 96.59% ( 1697/1757 )\nFunctions    : 100% ( 427/427 )\nLines        : 100% ( 2429/2429 )\n================================================================================\n",
+        "totalBytes": 2044,
+        "omittedBytes": 0
+      }
+    }
+  ],
+  "environment": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.4.0",
+    "cpuModel": "Apple M5",
+    "ci": true,
+    "runtimes": {
+      "node": "v24.19.0",
+      "npm": "11.12.1",
+      "python": "Python 3.14.4",
+      "pip": "pip 26.0.1 from /opt/homebrew/lib/python3.14/site-packages/pip (python 3.14)",
+      "git": "git version 2.54.0"
+    }
+  },
+  "git": {
+    "available": true,
+    "commit": "a79ff980ab14257e795332989e497bdff3218e87",
+    "branch": "master",
+    "initiallyDirty": false,
+    "isolationMode": "tracked",
+    "isolatedAttempts": false,
+    "changedPaths": [],
+    "changedDuringVerification": false,
+    "attemptsChangedState": 0
+  },
+  "issue": null,
+  "issueAssessment": null,
+  "privacy": {
+    "persistedEnvironmentValues": false,
+    "uploadPerformed": false,
+    "redactionCount": 0,
+    "redactions": []
+  },
+  "limitations": [
+    "This is an observation from one machine, not proof of the root cause.",
+    "A stable failure signature does not guarantee identical behavior in another environment.",
+    "Issue readiness is a deterministic heuristic, not a repair-success prediction.",
+    "The SHA-256 integrity checksum is not a digital signature or proof of authorship.",
+    "Tracked isolation does not reset untracked or ignored files between attempts."
+  ],
+  "integrity": {
+    "algorithm": "sha256",
+    "payloadHash": "fdcf073167f3cd85df186546fca700f13fa8cbf69e0f5c3cdb5255cfa57c7765",
+    "scope": "canonical JSON excluding the integrity field"
+  }
+}

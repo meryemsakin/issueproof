@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "1.0",
+  "id": "20260827T160328Z-55fbd1",
+  "createdAt": "2026-08-27T16:03:28.601Z",
+  "tool": {
+    "name": "issueproof",
+    "version": "0.3.0"
+  },
+  "reproduction": {
+    "expectation": "pass",
+    "attemptsRequested": 2,
+    "attemptsCompleted": 2,
+    "timeoutMs": 120000,
+    "maxOutputBytes": 65536,
+    "isolation": "tracked",
+    "command": {
+      "executable": "go",
+      "args": [
+        "test",
+        "-run",
+        "^TestJSONString$",
+        "-count=1",
+        "-v",
+        "."
+      ]
+    }
+  },
+  "verdict": {
+    "name": "verified_pass",
+    "verified": true,
+    "summary": "All 2 runs passed."
+  },
+  "runs": [
+    {
+      "attempt": 1,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T16:03:19.530Z",
+      "endedAt": "2026-08-27T16:03:26.076Z",
+      "durationMs": 6546,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "628f401c961671cfc8417f0a5e3887c6974dc1a92aa4ed166e8c9336d10d386f",
+      "signature": "=== RUN TestJSONString\n--- PASS: TestJSONString (<duration>)\nPASS\nok github.com/tidwall/gjson <duration>",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "=== RUN   TestJSONString\n--- PASS: TestJSONString (2.00s)\nPASS\nok  \tgithub.com/tidwall/gjson\t2.441s\n",
+        "totalBytes": 100,
+        "omittedBytes": 0
+      }
+    },
+    {
+      "attempt": 2,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T16:03:26.112Z",
+      "endedAt": "2026-08-27T16:03:28.568Z",
+      "durationMs": 2456,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "628f401c961671cfc8417f0a5e3887c6974dc1a92aa4ed166e8c9336d10d386f",
+      "signature": "=== RUN TestJSONString\n--- PASS: TestJSONString (<duration>)\nPASS\nok github.com/tidwall/gjson <duration>",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "=== RUN   TestJSONString\n--- PASS: TestJSONString (2.00s)\nPASS\nok  \tgithub.com/tidwall/gjson\t2.271s\n",
+        "totalBytes": 100,
+        "omittedBytes": 0
+      }
+    }
+  ],
+  "environment": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.4.0",
+    "cpuModel": "Apple M5",
+    "ci": true,
+    "runtimes": {
+      "node": "v24.19.0",
+      "npm": "11.12.1",
+      "python": "Python 3.14.4",
+      "pip": "pip 26.0.1 from /opt/homebrew/lib/python3.14/site-packages/pip (python 3.14)",
+      "go": "go version go1.27.0 darwin/arm64",
+      "git": "git version 2.54.0"
+    }
+  },
+  "git": {
+    "available": true,
+    "commit": "7d8b3821e9d2acf35e8a226b63fcf801078e9b96",
+    "branch": "master",
+    "initiallyDirty": false,
+    "isolationMode": "tracked",
+    "isolatedAttempts": false,
+    "changedPaths": [],
+    "changedDuringVerification": false,
+    "attemptsChangedState": 0
+  },
+  "issue": null,
+  "issueAssessment": null,
+  "privacy": {
+    "persistedEnvironmentValues": false,
+    "uploadPerformed": false,
+    "redactionCount": 0,
+    "redactions": []
+  },
+  "limitations": [
+    "This is an observation from one machine, not proof of the root cause.",
+    "A stable failure signature does not guarantee identical behavior in another environment.",
+    "Issue readiness is a deterministic heuristic, not a repair-success prediction.",
+    "The SHA-256 integrity checksum is not a digital signature or proof of authorship.",
+    "Tracked isolation does not reset untracked or ignored files between attempts."
+  ],
+  "integrity": {
+    "algorithm": "sha256",
+    "payloadHash": "fe5bc5981bf8c79ae265e380ec89c38e16abaecc515dfbda5a95cb2330158c3a",
+    "scope": "canonical JSON excluding the integrity field"
+  }
+}

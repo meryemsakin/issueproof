@@ -5,6 +5,7 @@ Case studies are evidence records, not testimonials. A study is publishable only
 ## Published studies
 
 - [PyTorch #192284: stable Dynamo failure on Python 3.14](pytorch-192284/README.md) — five isolated attempts at an immutable test-tree commit, including the receipt and the limitation that the runtime wheel did not match the source checkout.
+- [Ten external repositories: compatibility matrix and a Go 1.27 signal](external-matrix-2026-08-27/README.md) — nine selected commands passed twice; GJSON exposed a controlled Go 1.27-specific stable failure.
 
 ## Required fields
 

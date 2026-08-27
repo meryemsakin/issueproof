@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "1.0",
+  "id": "20260827T160004Z-bf683a",
+  "createdAt": "2026-08-27T16:00:04.449Z",
+  "tool": {
+    "name": "issueproof",
+    "version": "0.3.0"
+  },
+  "reproduction": {
+    "expectation": "pass",
+    "attemptsRequested": 2,
+    "attemptsCompleted": 2,
+    "timeoutMs": 240000,
+    "maxOutputBytes": 65536,
+    "isolation": "tracked",
+    "command": {
+      "executable": "go",
+      "args": [
+        "test",
+        "./..."
+      ]
+    }
+  },
+  "verdict": {
+    "name": "verified_pass",
+    "verified": true,
+    "summary": "All 2 runs passed."
+  },
+  "runs": [
+    {
+      "attempt": 1,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T15:59:12.956Z",
+      "endedAt": "2026-08-27T16:00:04.174Z",
+      "durationMs": 51218,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "5d914f59457320478dfd951cbda78b2209b974a1bc40608e69cd2d28ab4344ed",
+      "signature": "ok github.com/stretchr/testify <duration>\nok github.com/stretchr/testify/assert <duration>\nok github.com/stretchr/testify/assert/internal/unsafetests <duration>\n? github.com/stretchr/testify/assert/yaml [no test files]\n? github.com/stretchr/testify/http [no test files]\nok github.com/stretchr/testify/internal/difflib <duration>",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "ok  \tgithub.com/stretchr/testify\t4.882s\nok  \tgithub.com/stretchr/testify/assert\t5.736s\nok  \tgithub.com/stretchr/testify/assert/internal/unsafetests\t6.214s\n?   \tgithub.com/stretchr/testify/assert/yaml\t[no test files]\n?   \tgithub.com/stretchr/testify/http\t[no test files]\nok  \tgithub.com/stretchr/testify/internal/difflib\t7.029s\nok  \tgithub.com/stretchr/testify/internal/spew\t5.781s\nok  \tgithub.com/stretchr/testify/mock\t7.412s\nok  \tgithub.com/stretchr/testify/require\t6.691s\nok  \tgithub.com/stretchr/testify/suite\t26.026s\n",
+        "totalBytes": 521,
+        "omittedBytes": 0
+      }
+    },
+    {
+      "attempt": 2,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T16:00:04.212Z",
+      "endedAt": "2026-08-27T16:00:04.419Z",
+      "durationMs": 207,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "d43398b963435ead55f4d7ce9acf6c7ac1fd4f2b9c002bcc0ded7c3ff08a495f",
+      "signature": "ok github.com/stretchr/testify (cached)\nok github.com/stretchr/testify/assert (cached)\nok github.com/stretchr/testify/assert/internal/unsafetests (cached)\n? github.com/stretchr/testify/assert/yaml [no test files]\n? github.com/stretchr/testify/http [no test files]\nok github.com/stretchr/testify/internal/difflib (cached)",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "ok  \tgithub.com/stretchr/testify\t(cached)\nok  \tgithub.com/stretchr/testify/assert\t(cached)\nok  \tgithub.com/stretchr/testify/assert/internal/unsafetests\t(cached)\n?   \tgithub.com/stretchr/testify/assert/yaml\t[no test files]\n?   \tgithub.com/stretchr/testify/http\t[no test files]\nok  \tgithub.com/stretchr/testify/internal/difflib\t(cached)\nok  \tgithub.com/stretchr/testify/internal/spew\t(cached)\nok  \tgithub.com/stretchr/testify/mock\t(cached)\nok  \tgithub.com/stretchr/testify/require\t(cached)\nok  \tgithub.com/stretchr/testify/suite\t(cached)\n",
+        "totalBytes": 536,
+        "omittedBytes": 0
+      }
+    }
+  ],
+  "environment": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.4.0",
+    "cpuModel": "Apple M5",
+    "ci": true,
+    "runtimes": {
+      "node": "v24.19.0",
+      "npm": "11.12.1",
+      "python": "Python 3.14.4",
+      "pip": "pip 26.0.1 from /opt/homebrew/lib/python3.14/site-packages/pip (python 3.14)",
+      "go": "go version go1.27.0 darwin/arm64",
+      "git": "git version 2.54.0"
+    }
+  },
+  "git": {
+    "available": true,
+    "commit": "9f9d4f4cd868b1667991148401d30a012470b9c9",
+    "branch": "master",
+    "initiallyDirty": false,
+    "isolationMode": "tracked",
+    "isolatedAttempts": false,
+    "changedPaths": [],
+    "changedDuringVerification": false,
+    "attemptsChangedState": 0
+  },
+  "issue": null,
+  "issueAssessment": null,
+  "privacy": {
+    "persistedEnvironmentValues": false,
+    "uploadPerformed": false,
+    "redactionCount": 0,
+    "redactions": []
+  },
+  "limitations": [
+    "This is an observation from one machine, not proof of the root cause.",
+    "A stable failure signature does not guarantee identical behavior in another environment.",
+    "Issue readiness is a deterministic heuristic, not a repair-success prediction.",
+    "The SHA-256 integrity checksum is not a digital signature or proof of authorship.",
+    "Tracked isolation does not reset untracked or ignored files between attempts."
+  ],
+  "integrity": {
+    "algorithm": "sha256",
+    "payloadHash": "5ba58a723b18ac6e349ecd5d3351c0f338987c55b7e3f1423f52c81e40b05bdd",
+    "scope": "canonical JSON excluding the integrity field"
+  }
+}

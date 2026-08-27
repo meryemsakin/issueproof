@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "1.0",
+  "id": "20260827T155951Z-575b25",
+  "createdAt": "2026-08-27T15:59:51.009Z",
+  "tool": {
+    "name": "issueproof",
+    "version": "0.3.0"
+  },
+  "reproduction": {
+    "expectation": "pass",
+    "attemptsRequested": 2,
+    "attemptsCompleted": 2,
+    "timeoutMs": 300000,
+    "maxOutputBytes": 65536,
+    "isolation": "tracked",
+    "command": {
+      "executable": "go",
+      "args": [
+        "test",
+        "./..."
+      ]
+    }
+  },
+  "verdict": {
+    "name": "verified_pass",
+    "verified": true,
+    "summary": "All 2 runs passed."
+  },
+  "runs": [
+    {
+      "attempt": 1,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T15:59:12.947Z",
+      "endedAt": "2026-08-27T15:59:50.701Z",
+      "durationMs": 37754,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "3b15acc971d6aa397d1c6fb75997a12e1dd347df5ff0dcf2fb51995306975fa4",
+      "signature": "ok github.com/go-playground/validator/v10 <duration>\nok github.com/go-playground/validator/v10/non-standard/validators <duration>\nok github.com/go-playground/validator/v10/translations/ar <duration>\nok github.com/go-playground/validator/v10/translations/de <duration>\nok github.com/go-playground/validator/v10/translations/en <duration>\nok github.com/go-playground/validator/v10/translations/es <duration>\nok github.com/go-playground/validator/v10/translations/fa <duration>\nok github.com/go-playground/validator/v10/translations/fr <duration>\nok github.com/go-playground/validator/v10/translations/id <duration>\nok github.com/go-playground/validator/v10/translations/it <duration>\nok github.com/go-playground/validator/v10/translations/ja <duration>\nok github.com/go-playground/validator/v10/translations/ko <duration>\nok github.com/go-playground/validator/v10/translations/lv <duration>\nok github.com/go-playground/validator/v10/translations/nl <duration>\nok github.com/go-playground/validator/v10/translations/pl <duration>\nok github.com/go-playground/validator/v10/translations/pt <duration>\nok github.com/go-playground/validator/v10/translations/pt_BR <duration>\nok github.com/go-playground/validator/v10/translations/ru <duration>\nok github.com/go-playground/validator/v10/translations/th <duration>\nok github.com/go-playground/validator/v10/translations/tr <duration>\nok github.com/go-playground/validator/v10/translations/uk <duration>\nok github.com/go-playground/validator/v10/translations/vi <duration>\nok github.com/go-playground/validator/v10/translations/zh <duration>\nok github.com/go-playground/validator/v10/translations/zh_tw <duration>",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "ok  \tgithub.com/go-playground/validator/v10\t0.587s\nok  \tgithub.com/go-playground/validator/v10/non-standard/validators\t2.893s\nok  \tgithub.com/go-playground/validator/v10/translations/ar\t3.713s\nok  \tgithub.com/go-playground/validator/v10/translations/de\t1.130s\nok  \tgithub.com/go-playground/validator/v10/translations/en\t2.069s\nok  \tgithub.com/go-playground/validator/v10/translations/es\t2.487s\nok  \tgithub.com/go-playground/validator/v10/translations/fa\t4.535s\nok  \tgithub.com/go-playground/validator/v10/translations/fr\t3.310s\nok  \tgithub.com/go-playground/validator/v10/translations/id\t1.665s\nok  \tgithub.com/go-playground/validator/v10/translations/it\t4.123s\nok  \tgithub.com/go-playground/validator/v10/translations/ja\t4.760s\nok  \tgithub.com/go-playground/validator/v10/translations/ko\t5.134s\nok  \tgithub.com/go-playground/validator/v10/translations/lv\t5.009s\nok  \tgithub.com/go-playground/validator/v10/translations/nl\t7.771s\nok  \tgithub.com/go-playground/validator/v10/translations/pl\t7.720s\nok  \tgithub.com/go-playground/validator/v10/translations/pt\t7.690s\nok  \tgithub.com/go-playground/validator/v10/translations/pt_BR\t7.642s\nok  \tgithub.com/go-playground/validator/v10/translations/ru\t7.607s\nok  \tgithub.com/go-playground/validator/v10/translations/th\t7.561s\nok  \tgithub.com/go-playground/validator/v10/translations/tr\t7.575s\nok  \tgithub.com/go-playground/validator/v10/translations/uk\t7.561s\nok  \tgithub.com/go-playground/validator/v10/translations/vi\t7.001s\nok  \tgithub.com/go-playground/validator/v10/translations/zh\t7.069s\nok  \tgithub.com/go-playground/validator/v10/translations/zh_tw\t4.619s\n",
+        "totalBytes": 1606,
+        "omittedBytes": 0
+      }
+    },
+    {
+      "attempt": 2,
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "spawnError": null,
+      "startedAt": "2026-08-27T15:59:50.740Z",
+      "endedAt": "2026-08-27T15:59:50.976Z",
+      "durationMs": 236,
+      "termination": {
+        "requested": false,
+        "strategy": "posix-process-group",
+        "escalated": false
+      },
+      "fingerprint": "b04b3ec044192baa550f835413d34e86591c6060323baff4a134d4baac72c657",
+      "signature": "ok github.com/go-playground/validator/v10 (cached)\nok github.com/go-playground/validator/v10/non-standard/validators (cached)\nok github.com/go-playground/validator/v10/translations/ar (cached)\nok github.com/go-playground/validator/v10/translations/de (cached)\nok github.com/go-playground/validator/v10/translations/en (cached)\nok github.com/go-playground/validator/v10/translations/es (cached)\nok github.com/go-playground/validator/v10/translations/fa (cached)\nok github.com/go-playground/validator/v10/translations/fr (cached)\nok github.com/go-playground/validator/v10/translations/id (cached)\nok github.com/go-playground/validator/v10/translations/it (cached)\nok github.com/go-playground/validator/v10/translations/ja (cached)\nok github.com/go-playground/validator/v10/translations/ko (cached)\nok github.com/go-playground/validator/v10/translations/lv (cached)\nok github.com/go-playground/validator/v10/translations/nl (cached)\nok github.com/go-playground/validator/v10/translations/pl (cached)\nok github.com/go-playground/validator/v10/translations/pt (cached)\nok github.com/go-playground/validator/v10/translations/pt_BR (cached)\nok github.com/go-playground/validator/v10/translations/ru (cached)\nok github.com/go-playground/validator/v10/translations/th (cached)\nok github.com/go-playground/validator/v10/translations/tr (cached)\nok github.com/go-playground/validator/v10/translations/uk (cached)\nok github.com/go-playground/validator/v10/translations/vi (cached)\nok github.com/go-playground/validator/v10/translations/zh (cached)\nok github.com/go-playground/validator/v10/translations/zh_tw (cached)",
+      "stateChanged": false,
+      "stateContaminated": false,
+      "isolation": {
+        "mode": "tracked",
+        "cleanStart": false,
+        "cleanupSucceeded": true,
+        "cleanupWarnings": []
+      },
+      "isolationCleanupError": null,
+      "output": {
+        "text": "ok  \tgithub.com/go-playground/validator/v10\t(cached)\nok  \tgithub.com/go-playground/validator/v10/non-standard/validators\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/ar\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/de\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/en\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/es\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/fa\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/fr\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/id\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/it\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/ja\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/ko\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/lv\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/nl\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/pl\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/pt\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/pt_BR\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/ru\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/th\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/tr\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/uk\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/vi\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/zh\t(cached)\nok  \tgithub.com/go-playground/validator/v10/translations/zh_tw\t(cached)\n",
+        "totalBytes": 1654,
+        "omittedBytes": 0
+      }
+    }
+  ],
+  "environment": {
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "25.4.0",
+    "cpuModel": "Apple M5",
+    "ci": true,
+    "runtimes": {
+      "node": "v24.19.0",
+      "npm": "11.12.1",
+      "python": "Python 3.14.4",
+      "pip": "pip 26.0.1 from /opt/homebrew/lib/python3.14/site-packages/pip (python 3.14)",
+      "go": "go version go1.27.0 darwin/arm64",
+      "git": "git version 2.54.0"
+    }
+  },
+  "git": {
+    "available": true,
+    "commit": "961375b9290b3515001e02bfd4556229fe2a197f",
+    "branch": "master",
+    "initiallyDirty": false,
+    "isolationMode": "tracked",
+    "isolatedAttempts": false,
+    "changedPaths": [],
+    "changedDuringVerification": false,
+    "attemptsChangedState": 0
+  },
+  "issue": null,
+  "issueAssessment": null,
+  "privacy": {
+    "persistedEnvironmentValues": false,
+    "uploadPerformed": false,
+    "redactionCount": 0,
+    "redactions": []
+  },
+  "limitations": [
+    "This is an observation from one machine, not proof of the root cause.",
+    "A stable failure signature does not guarantee identical behavior in another environment.",
+    "Issue readiness is a deterministic heuristic, not a repair-success prediction.",
+    "The SHA-256 integrity checksum is not a digital signature or proof of authorship.",
+    "Tracked isolation does not reset untracked or ignored files between attempts."
+  ],
+  "integrity": {
+    "algorithm": "sha256",
+    "payloadHash": "099a10b4b6686f605b83af8109301b688dd7152cfcfb0ef295881b45f7726f36",
+    "scope": "canonical JSON excluding the integrity field"
+  }
+}
