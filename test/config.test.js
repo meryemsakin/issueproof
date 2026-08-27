@@ -15,9 +15,19 @@ test("creates and loads an argv-based config with paths relative to the config",
     assert.deepEqual(loaded.args, ["test.js"]);
     assert.equal(loaded.cwd, path.join(directory, "nested"));
     assert.equal(loaded.issueFile, path.join(directory, "issue.md"));
+    assert.equal(loaded.isolation, "tracked");
   } finally {
     await rm(directory, { recursive: true, force: true });
   }
+});
+
+test("accepts only explicit supported isolation modes", () => {
+  assert.deepEqual(validateConfig({ schemaVersion: "1.0", command: ["node", "test.js"], isolation: "worktree" }), []);
+  assert.ok(
+    validateConfig({ schemaVersion: "1.0", command: ["node", "test.js"], isolation: "container" }).some((error) =>
+      error.includes("tracked or worktree"),
+    ),
+  );
 });
 
 test("rejects unknown keys and too few runs", () => {

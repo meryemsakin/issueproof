@@ -1,11 +1,12 @@
 import { randomBytes, createHash } from "node:crypto";
-import { readFile } from "node:fs/promises";
+import { readFile, realpath } from "node:fs/promises";
 import path from "node:path";
 import { classifyRuns } from "./classify.js";
 import { collectEnvironment } from "./environment.js";
 import { fingerprint } from "./fingerprint.js";
 import { collectGitState, gitStateChanged } from "./git.js";
 import { sealReceipt } from "./integrity.js";
+import { createWorktreeAttempt } from "./isolation.js";
 import { runProcess } from "./process.js";
 import { assessIssue } from "./readiness.js";
 import { redact } from "./redact.js";
@@ -53,14 +54,25 @@ export async function verifyReproduction(options) {
     issueFile,
     showOutput = false,
     onProgress = () => {},
+    isolation = "tracked",
   } = options;
-  const absoluteCwd = path.resolve(cwd);
+  const absoluteCwd = await realpath(path.resolve(cwd));
   const redactions = new Map();
-  const [environment, initialGit, issueText] = await Promise.all([
+  const [collectedEnvironment, initialGit, issueText] = await Promise.all([
     collectEnvironment(absoluteCwd),
     collectGitState(absoluteCwd),
     issueFile ? readFile(path.resolve(issueFile), "utf8") : Promise.resolve(null),
   ]);
+  const environment = {
+    ...collectedEnvironment,
+    runtimes: Object.fromEntries(
+      Object.entries(collectedEnvironment.runtimes).map(([name, version]) => {
+        const safeVersion = redact(version, { cwd: absoluteCwd });
+        mergeRedactions(redactions, safeVersion.matches);
+        return [name, safeVersion.text];
+      }),
+    ),
+  };
 
   const safeCommand = redact(command, { cwd: absoluteCwd });
   mergeRedactions(redactions, safeCommand.matches);
@@ -69,20 +81,34 @@ export async function verifyReproduction(options) {
   const attempts = [];
   for (let index = 0; index < runs; index += 1) {
     onProgress({ type: "run-start", attempt: index + 1, total: runs });
-    const before = await collectGitState(absoluteCwd);
-    const execution = await runProcess(command, args, {
-      cwd: absoluteCwd,
-      timeoutMs,
-      maxOutputBytes,
-      onData: showOutput
-        ? (chunk, source) => (source === "stdout" ? process.stdout : process.stderr).write(chunk)
-        : undefined,
-    });
-    const after = await collectGitState(absoluteCwd);
-    const safeOutput = redact(execution.output.text, { cwd: absoluteCwd });
+    const attemptContext = isolation === "worktree"
+      ? await createWorktreeAttempt({ cwd: absoluteCwd, command, args, gitState: initialGit })
+      : { cwd: absoluteCwd, command, args, cleanup: async () => ({ ok: true, warnings: [] }) };
+    let execution;
+    let before;
+    let after;
+    let cleanup = { ok: true, warnings: [] };
+    try {
+      before = await collectGitState(attemptContext.cwd);
+      execution = await runProcess(attemptContext.command, attemptContext.args, {
+        cwd: attemptContext.cwd,
+        timeoutMs,
+        maxOutputBytes,
+        onData: showOutput
+          ? (chunk, source) => (source === "stdout" ? process.stdout : process.stderr).write(chunk)
+          : undefined,
+      });
+      after = await collectGitState(attemptContext.cwd);
+    } finally {
+      cleanup = await attemptContext.cleanup();
+    }
+    const attemptOutput = redact(execution.output.text, { cwd: attemptContext.cwd });
+    mergeRedactions(redactions, attemptOutput.matches);
+    const safeOutput = redact(attemptOutput.text, { cwd: absoluteCwd });
     mergeRedactions(redactions, safeOutput.matches);
     const failure = fingerprint(execution.exitCode, safeOutput.text);
     const stateChanged = gitStateChanged(before, after);
+    const stateContaminated = isolation === "tracked" && stateChanged;
     const run = {
       attempt: index + 1,
       exitCode: execution.exitCode,
@@ -92,9 +118,18 @@ export async function verifyReproduction(options) {
       startedAt: execution.startedAt,
       endedAt: execution.endedAt,
       durationMs: execution.durationMs,
+      termination: execution.termination,
       fingerprint: failure.hash,
       signature: failure.signature,
       stateChanged,
+      stateContaminated,
+      isolation: {
+        mode: isolation,
+        cleanStart: isolation === "worktree",
+        cleanupSucceeded: cleanup.ok,
+        cleanupWarnings: cleanup.warnings,
+      },
+      isolationCleanupError: cleanup.ok ? null : cleanup.warnings.join("; ") || "Unknown cleanup failure",
       output: {
         text: safeOutput.text,
         totalBytes: execution.output.totalBytes,
@@ -103,7 +138,7 @@ export async function verifyReproduction(options) {
     };
     attempts.push(run);
     onProgress({ type: "run-end", run });
-    if (stateChanged || execution.timedOut || execution.spawnError) break;
+    if (stateContaminated || !cleanup.ok || execution.timedOut || execution.spawnError) break;
   }
 
   const finalGit = await collectGitState(absoluteCwd);
@@ -120,6 +155,7 @@ export async function verifyReproduction(options) {
       attemptsCompleted: attempts.length,
       timeoutMs,
       maxOutputBytes,
+      isolation,
       command: {
         executable: safeCommand.text,
         args: safeArgs,
@@ -134,8 +170,11 @@ export async function verifyReproduction(options) {
           commit: initialGit.commit,
           branch: initialGit.branch,
           initiallyDirty: initialGit.dirty,
+          isolationMode: isolation,
+          isolatedAttempts: isolation === "worktree",
           changedPaths: initialGit.changedPaths,
           changedDuringVerification: gitStateChanged(initialGit, finalGit),
+          attemptsChangedState: attempts.filter((run) => run.stateChanged).length,
         }
       : { available: false },
     issue: issueText
@@ -156,6 +195,9 @@ export async function verifyReproduction(options) {
       "A stable failure signature does not guarantee identical behavior in another environment.",
       "Issue readiness is a deterministic heuristic, not a repair-success prediction.",
       "The SHA-256 integrity checksum is not a digital signature or proof of authorship.",
+      ...(isolation === "worktree"
+        ? ["Worktree isolation resets tracked repository files only; global services, caches, processes, and external systems remain shared."]
+        : ["Tracked isolation does not reset untracked or ignored files between attempts."]),
     ],
   };
   return sealReceipt(rawReceipt);

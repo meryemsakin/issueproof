@@ -11,7 +11,15 @@ export function classifyRuns(runs, expectation = "fail") {
     return { verdict: "command_error", verified: false, summary: "The reproduction command could not be started." };
   }
 
-  if (runs.some((run) => run.stateChanged)) {
+  if (runs.some((run) => run.isolationCleanupError)) {
+    return {
+      verdict: "isolation_error",
+      verified: false,
+      summary: "An isolated attempt could not be cleaned up safely.",
+    };
+  }
+
+  if (runs.some((run) => run.stateContaminated ?? run.stateChanged)) {
     return {
       verdict: "contaminated",
       verified: false,

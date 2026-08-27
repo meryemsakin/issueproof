@@ -26,6 +26,7 @@ Verify options:
   --issue <file>         Assess an issue description alongside runtime proof
   --output <directory>   Receipt root (default: .issueproof/receipts)
   --cwd <directory>      Working directory for the command
+  --isolation <mode>     tracked or worktree (default: tracked)
   --max-output-kb <n>    Stored head+tail output limit (default: 64)
   --show-output          Stream raw command output while running
   --json                 Emit a machine-readable summary on stdout
@@ -35,6 +36,7 @@ Init options:
   --issue <file>         Store an issue-description path
   --expect <fail|pass>   Expected outcome (default: fail)
   --runs <n>             Attempts (default: 3)
+  --isolation <mode>     tracked or worktree (default: tracked)
   --force                Replace an existing config file
 
 Examples:
@@ -52,6 +54,7 @@ const DEFAULTS = {
   cwd: process.cwd(),
   maxOutputBytes: 64 * 1024,
   showOutput: false,
+  isolation: "tracked",
 };
 
 function parseInteger(value, name, minimum, maximum) {
@@ -111,6 +114,12 @@ function parseVerify(tokens) {
       index += 1;
     } else if (token === "--cwd") {
       parsed.overrides.cwd = path.resolve(takeValue(optionTokens, index, token));
+      index += 1;
+    } else if (token === "--isolation") {
+      parsed.overrides.isolation = takeValue(optionTokens, index, token);
+      if (!["tracked", "worktree"].includes(parsed.overrides.isolation)) {
+        throw new Error("--isolation must be tracked or worktree.");
+      }
       index += 1;
     } else if (token === "--max-output-kb") {
       parsed.overrides.maxOutputBytes = parseInteger(takeValue(optionTokens, index, token), token, 1, 1_024) * 1_024;
@@ -212,6 +221,12 @@ function parseInit(tokens) {
     } else if (token === "--max-output-kb") {
       parsed.maxOutputKb = parseInteger(takeValue(optionTokens, index, token), token, 1, 1_024);
       index += 1;
+    } else if (token === "--isolation") {
+      parsed.isolation = takeValue(optionTokens, index, token);
+      if (!["tracked", "worktree"].includes(parsed.isolation)) {
+        throw new Error("--isolation must be tracked or worktree.");
+      }
+      index += 1;
     } else if (token === "--force") {
       parsed.force = true;
     } else {
@@ -248,7 +263,7 @@ async function runAssess(tokens) {
   const text = await readFile(path.resolve(tokens[0]), "utf8");
   const assessment = assessIssue(text);
   console.log(JSON.stringify(assessment, null, 2));
-  return assessment.score >= 80 ? 0 : 1;
+  return assessment.checklist.missingRequired.length === 0 ? 0 : 1;
 }
 
 async function runCheck(tokens) {

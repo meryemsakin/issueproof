@@ -35,6 +35,7 @@
         "expectation": { "enum": ["fail", "pass"] },
         "attemptsRequested": { "type": "integer", "minimum": 1 },
         "attemptsCompleted": { "type": "integer", "minimum": 1 },
+        "isolation": { "enum": ["tracked", "worktree"] },
         "command": {
           "type": "object",
           "required": ["executable", "args"],
@@ -62,6 +63,7 @@
             "observed_failure",
             "observed_pass",
             "command_error",
+            "isolation_error",
             "invalid"
           ]
         },
@@ -74,7 +76,24 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["attempt", "exitCode", "durationMs", "fingerprint", "stateChanged", "output"]
+        "required": ["attempt", "exitCode", "durationMs", "fingerprint", "stateChanged", "output"],
+        "properties": {
+          "stateContaminated": { "type": "boolean" },
+          "termination": {
+            "type": "object",
+            "required": ["requested", "strategy", "escalated"],
+            "properties": {
+              "requested": { "type": "boolean" },
+              "strategy": { "enum": ["posix-process-group", "windows-process-tree"] },
+              "escalated": { "type": "boolean" },
+              "error": { "type": "string" }
+            }
+          },
+          "isolation": {
+            "type": "object",
+            "required": ["mode", "cleanStart", "cleanupSucceeded", "cleanupWarnings"]
+          }
+        }
       }
     },
     "environment": { "type": "object" },

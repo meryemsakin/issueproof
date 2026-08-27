@@ -14,6 +14,7 @@ const ALLOWED_KEYS = new Set([
   "issue",
   "output",
   "cwd",
+  "isolation",
 ]);
 
 const SECRET_FLAG = /^--(?:api[-_]?key|access[-_]?token|auth[-_]?token|token|client[-_]?secret|password|passwd|secret)$/i;
@@ -50,6 +51,9 @@ export function validateConfig(config) {
   }
   if (config.maxOutputKb !== undefined && !integerInRange(config.maxOutputKb, 1, 1_024)) {
     errors.push("maxOutputKb must be an integer between 1 and 1024.");
+  }
+  if (config.isolation !== undefined && !["tracked", "worktree"].includes(config.isolation)) {
+    errors.push("isolation must be tracked or worktree.");
   }
   for (const key of ["issue", "output", "cwd"]) {
     if (config[key] !== undefined && (typeof config[key] !== "string" || config[key].length === 0)) {
@@ -91,6 +95,7 @@ export function normalizeConfig(config, configPath) {
     cwd: path.resolve(baseDirectory, config.cwd ?? "."),
     issueFile: config.issue ? path.resolve(baseDirectory, config.issue) : undefined,
     output: path.resolve(baseDirectory, config.output ?? ".issueproof/receipts"),
+    isolation: config.isolation ?? "tracked",
   };
 }
 
@@ -140,6 +145,7 @@ export async function createConfig(configPath, command, options = {}) {
     ...(issue ? { issue } : {}),
     output: ".issueproof/receipts",
     cwd: ".",
+    isolation: options.isolation ?? "tracked",
   };
   const errors = validateConfig(config);
   if (errors.length > 0) throw new Error(errors.join(" "));
