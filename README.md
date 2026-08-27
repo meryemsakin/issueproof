@@ -3,10 +3,17 @@
 **Prove that a bug reproduction is stable before handing it to a human or coding agent.**
 
 [![npm](https://img.shields.io/npm/v/issueproof)](https://www.npmjs.com/package/issueproof)
+[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-IssueProof-blue?logo=github)](https://github.com/marketplace/actions/issueproof)
 [![CI](https://github.com/meryemsakin/issueproof/actions/workflows/ci.yml/badge.svg)](https://github.com/meryemsakin/issueproof/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-IssueProof runs an exact reproduction command multiple times, compares normalized failure signatures, detects repository-state contamination, redacts common secrets, and emits integrity-checked JSON and Markdown receipts.
+An issue can look reproducible and still be a poor unit of work. The command may pass on the next run, fail with a different signature, or change the checkout that later attempts depend on. Handing that evidence directly to a maintainer or coding agent wastes time on an unstable premise.
+
+IssueProof runs the exact command repeatedly, compares normalized failure signatures, watches tracked Git state, and writes reviewable JSON and Markdown receipts. It answers one deliberately narrow question:
+
+> Is this exact reproduction stable enough to hand off?
+
+It does not diagnose the root cause, decide that a bug is new, or claim that an absent failure is fixed.
 
 ![IssueProof terminal demo](https://raw.githubusercontent.com/meryemsakin/issueproof/main/docs/assets/issueproof-demo.gif)
 
@@ -31,6 +38,18 @@ stable_failure: The same failure occurred in all 3 runs.
 Receipt: .issueproof/receipts/<id>/receipt.md
 Machine-readable: .issueproof/receipts/<id>/receipt.json
 ```
+
+## Evidence from a real repository
+
+At an immutable [GJSON commit](https://github.com/tidwall/gjson/commit/7d8b3821e9d2acf35e8a226b63fcf801078e9b96), IssueProof recorded this control matrix for `TestJSONString`:
+
+| Runtime/control | Result |
+| --- | --- |
+| Go 1.27.0 | `stable_failure`, 5/5 attempts |
+| Go 1.26.2 | `verified_pass`, 2/2 attempts |
+| Go 1.27.0 with `GOEXPERIMENT=nojsonv2` | `verified_pass`, 2/2 attempts |
+
+The controls isolated a Go-version-specific exact-output difference. They did not establish a new Go regression: the Go json/v2 working group had already reviewed the behavior and retained it as a non-semantic encoding change. The [case study and receipts](docs/case-studies/external-matrix-2026-08-27/README.md#gjson-control-matrix) preserve the commands, environment, results, and limitations; the downstream test question is tracked in [tidwall/gjson#397](https://github.com/tidwall/gjson/issues/397).
 
 ## Why this is different
 
@@ -182,7 +201,7 @@ Usage questions and suspected bugs follow [SUPPORT.md](SUPPORT.md). Security-sen
 
 ## Status
 
-This is an evidence-backed v0.3 public alpha. The CLI is published as [`issueproof` on npm](https://www.npmjs.com/package/issueproof), and the repository can be consumed as a composite GitHub Action.
+This is an evidence-backed v0.3 public alpha. The CLI is published as [`issueproof` on npm](https://www.npmjs.com/package/issueproof), and the composite Action is available in the [GitHub Marketplace](https://github.com/marketplace/actions/issueproof).
 
 ## License
 
