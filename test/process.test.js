@@ -57,7 +57,9 @@ test("terminates descendant processes when a command times out", async () => {
     ].join("\n");
 
     const result = await runProcess(process.execPath, ["-e", parentScript, pidFile], {
-      timeoutMs: 500,
+      // Hosted Windows runners can take well over 500 ms to start the nested
+      // Node process. Give setup enough time before exercising tree cleanup.
+      timeoutMs: process.platform === "win32" ? 5_000 : 500,
       maxOutputBytes: 4_096,
     });
     descendantPid = Number.parseInt(await readFile(pidFile, "utf8"), 10);

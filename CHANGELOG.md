@@ -8,6 +8,7 @@ All notable changes are documented here. The project follows semantic versioning
 
 - Add optional per-attempt Git worktree isolation from committed `HEAD`.
 - Terminate timed-out POSIX process groups and Windows process trees, including descendant workers.
+- Stabilize the process-tree timeout regression test under slow hosted Windows runner startup.
 - Add an adversarial failure-fingerprint regression corpus with explicit merge/separation decisions.
 - Make named issue-evidence checks primary and label the retained numeric score as uncalibrated.
 - Add external dogfood, case-study, and launch-readiness gates.
