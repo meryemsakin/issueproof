@@ -40,7 +40,7 @@ The initial Go 1.27 full-package run failed twice in `TestJSONString`, where GJS
 | Go 1.26.2 | `go test -v .` | `verified_pass`, 2/2 | [`e126af3…`](receipts/gjson-go126-full.json) |
 | Go 1.27.0 with `GOEXPERIMENT=nojsonv2` | narrowed command above | `verified_pass`, 2/2 | [`fe5bc59…`](receipts/gjson-go127-nojsonv2.json) |
 
-The evidence isolates the observed change to the Go 1.27 JSON implementation boundary. Go 1.27 makes the existing `encoding/json` API use the new v2 backend and documents `GOEXPERIMENT=nojsonv2` as a temporary compatibility control. This does not yet establish whether the appropriate upstream change belongs in GJSON, the test expectation, or Go itself. The observation and its controls were reported in [tidwall/gjson#397](https://github.com/tidwall/gjson/issues/397) for maintainer review.
+The evidence isolates the observed change to the Go 1.27 JSON implementation boundary. Go 1.27 makes the existing `encoding/json` API use the new v2 backend and documents `GOEXPERIMENT=nojsonv2` as a temporary compatibility control. The Go json/v2 working group had already reviewed this exact GJSON mismatch in [golang/go#75163](https://github.com/golang/go/issues/75163) and deliberately retained the literal U+FFFD representation as a non-semantic encoding change. The observation is therefore not a newly identified Go regression; the remaining downstream question is whether GJSON should change `AppendJSONString` or its exact-output test expectation. The observation and its controls were reported in [tidwall/gjson#397](https://github.com/tidwall/gjson/issues/397) for maintainer review.
 
 ## Limits
 
